@@ -11,7 +11,10 @@
   "author": "thomasemilsson",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "cuid": "^2.1.8",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.20"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
