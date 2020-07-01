@@ -47,4 +47,6 @@ const dateIdeaSchema = new mongoose.Schema({
   //     required: true,
 })
 
-export const DateIdea = mongoose.model('dateIdea', dateIdeaSchema)
+const DateIdea = mongoose.model('dateIdea', dateIdeaSchema)
+
+export default DateIdea
