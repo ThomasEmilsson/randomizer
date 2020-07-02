@@ -1,23 +1,15 @@
 import express from 'express'
 import bodyparser from 'body-parser'
-import mongoose from 'mongoose'
-import { keys } from './config/keys.js'
 import { router as dateIdeaRouter } from './components/dateIdea/dateIdea.router.js'
+import { connect } from './utilities/database.js'
+
 const app = express()
 const port = 3000
 
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
 
-const db = keys.mongoURI
-
-mongoose
-  .connect(db, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('Connected to Database'))
-  .catch((err) => console.log(err))
+connect()
 
 app.get('/', (req, res) => {
   res.send(hi())
