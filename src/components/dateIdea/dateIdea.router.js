@@ -1,5 +1,5 @@
 import Router from 'express'
-import DateIdea from './dateIdea.model.js'
+import { DateIdea } from './dateIdea.model.js'
 
 const router = Router()
 
@@ -19,4 +19,4 @@ router.post('/', (req, res) => {
   }
 })
 
-export default router
+export { router }
