@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyparser from 'body-parser'
-import { router as dateIdeaRouter } from './components/dateIdea/dateIdea.router.js'
+import dateIdeaRouter from './components/dateIdea/dateIdea.router.js'
 import { connect } from './utilities/database.js'
 
 const app = express()
