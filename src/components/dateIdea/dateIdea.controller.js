@@ -1,12 +1,13 @@
 import { DateIdea } from './dateIdea.model.js'
 
 const postDateIdea = (req, res) => {
+  const created_by = req.user._id
   try {
-    const newDateIdea = new DateIdea({ ...req.body })
+    const newDateIdea = new DateIdea({ ...req.body, created_by })
     newDateIdea
       .save()
-      .then((date) =>
-        console.log('New Date inserted into the database:' + date)
+      .then((dateIdea) =>
+        console.log('New Date inserted into the database:' + dateIdea)
       )
       .catch((err) => console.log(err))
     res.status(201).json({ data: newDateIdea })

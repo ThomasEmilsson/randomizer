@@ -28,7 +28,7 @@ const dateIdeaSchema = new mongoose.Schema({
     type: [String],
     required: false,
   },
-  type: {
+  tags: {
     type: [String],
     enum: [
       'Romantic',
@@ -41,10 +41,11 @@ const dateIdeaSchema = new mongoose.Schema({
       'New',
     ],
   },
-  //   created_by: {
-  //     type: mongoose.SchemaTypes.ObjectId,
-  //     ref: 'user',
-  //     required: true,
+  created_by: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'user',
+    required: true,
+  },
 })
 
 const DateIdea = mongoose.model('dateIdea', dateIdeaSchema)
