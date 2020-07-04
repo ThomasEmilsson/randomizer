@@ -3,7 +3,7 @@ import bodyparser from 'body-parser'
 import dateIdeaRouter from './components/dateIdea/dateIdea.router.js'
 import userRouter from './components/user/user.router.js'
 import { connect } from './utilities/database.js'
-import { signUp, signIn } from './utilities/authentication.js'
+import { signUp, signIn, applyToken } from './utilities/authentication.js'
 // import { User } from './components/user/user.model.js'
 
 const app = express()
@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 app.post('/signUp', signUp)
 app.post('/signIn', signIn)
 
+app.use('/api', applyToken)
 app.use('/api/user', userRouter)
 app.use('/api/dateIdea', dateIdeaRouter)
 
