@@ -6,8 +6,10 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
+    index: {
+      unique: true,
+    },
   },
   password: {
     type: String,
@@ -33,11 +35,12 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre('save', function (next) {
+  var user = this
   if (!this.isModified) {
     return next()
   }
 
-  bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salte) {
+  bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
     if (err) {
       return next(err)
     }
@@ -54,6 +57,7 @@ userSchema.pre('save', function (next) {
 
 userSchema.methods.comparePassword = function (password) {
   const passwordHash = this.password
+
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, passwordHash, (err, match) => {
       if (err) {

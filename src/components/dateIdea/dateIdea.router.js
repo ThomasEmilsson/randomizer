@@ -5,6 +5,6 @@ const router = Router()
 router
   .route('/')
   .post(dateIdeaController.createDate)
-  .get(dateIdeaController.getDates)
+  .get(dateIdeaController.readDates)
 
 export default router

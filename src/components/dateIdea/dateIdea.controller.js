@@ -27,7 +27,7 @@ const getDateIdeas = (req, res) => {
 
 const controller = {
   createDate: postDateIdea,
-  getDates: getDateIdeas,
+  readDates: getDateIdeas,
 }
 
 export default controller
