@@ -9,6 +9,7 @@ const postUser = (req, res) => {
   try {
     const newUser = new User({ ...req.body })
     newUser.save().then((user) => console.log('New User created ' + user))
+    res.status(201).end()
   } catch (err) {
     console.error(err)
     res.status(400).end()

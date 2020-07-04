@@ -1,8 +1,13 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
-const SALT_WORK_FACTOR = 10
+import { keys } from '../../config/keys.js'
 
 const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   email: {
     type: String,
     required: true,
@@ -40,7 +45,7 @@ userSchema.pre('save', function (next) {
     return next()
   }
 
-  bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
+  bcrypt.genSalt(keys.SALT_WORK_FACTOR, function (err, salt) {
     if (err) {
       return next(err)
     }

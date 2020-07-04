@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
-import { User } from '../components/user/user.model.js'
+import bcrypt from 'bcrypt'
 import { keys } from '../config/keys.js'
+import { User } from '../components/user/user.model.js'
 
 const generateToken = (user) => {
   return jwt.sign({ id: user.id }, keys.jwt.privateKey, {
@@ -12,4 +13,48 @@ const verifyToken = (token) => {
   return jwt.verify(token, keys.jwt.privateKey)
 }
 
-export { generateToken, verifyToken }
+const signUp = async (req, res) => {
+  if (!req.body.name || !req.body.email || !req.body.password) {
+    return res.status(400).send({ message: 'missing fields' })
+  }
+
+  try {
+    const user = await User.create(req.body)
+    const token = generateToken(user)
+    return res.status(201).send({ token })
+  } catch (err) {
+    res.status(500).end()
+  }
+}
+
+const signIn = async (req, res) => {
+  if (!req.body.email || !req.body.password) {
+    return res.status(400).send({ message: 'missing fields' })
+  }
+
+  const userMessage = { message: 'Invalid email and password combination' }
+
+  try {
+    const user = await User.findOne({ email: req.body.email })
+      .select('name email password')
+      .exec()
+
+    if (!user) {
+      return res.status(401).send(userMessage)
+    }
+
+    const match = await user.comparePassword(req.body.password)
+
+    if (!match) {
+      return res.status(401).send(userMessage)
+    }
+
+    const token = generateToken(user)
+    return res.status(201).send({ token })
+  } catch (err) {
+    console.error(err)
+    res.status(500).end()
+  }
+}
+
+export { signUp, signIn }
