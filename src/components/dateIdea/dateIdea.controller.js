@@ -19,7 +19,15 @@ const postDateIdea = (req, res) => {
 
 const getDateIdeas = (req, res) => {
   try {
-    res.status(200).end()
+    const dateIdeas = DateIdea.find({ created_by: req.user._id }).then(
+      (dates) => {
+        let listOfDates = []
+        dates.forEach((date) => {
+          listOfDates.push(date.toObject())
+        })
+        res.status(200).send(listOfDates)
+      }
+    )
   } catch (e) {
     console.error(e)
     res.status(400).end()
