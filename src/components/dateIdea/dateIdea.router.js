@@ -4,7 +4,12 @@ const router = Router()
 
 router
   .route('/')
-  .post(dateIdeaController.createDate)
-  .get(dateIdeaController.readDates)
+  .post(dateIdeaController.createDateIdea)
+  .get(dateIdeaController.getDateIdeas)
+
+router
+  .route('/:id')
+  .get(dateIdeaController.getDateIdea)
+  .delete(dateIdeaController.deleteDateIdea)
 
 export default router
