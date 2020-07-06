@@ -1,7 +1,7 @@
 import { User } from '../user/user.model.js'
 
 const getCurrentUser = (req, res) => {
-  if (req.user) res.status(200).json({ data: req.user })
+  if (req.user && req.session.user) res.status(200).send(req.user)
   else res.status(400).end()
 }
 

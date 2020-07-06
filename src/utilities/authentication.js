@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import session from 'express-session'
 import { keys } from '../config/keys.js'
 import { User } from '../components/user/user.model.js'
 
@@ -49,7 +50,23 @@ const signIn = async (req, res) => {
     }
 
     const token = generateToken(user)
+    req.session.user = user
     return res.status(201).send({ token })
+  } catch (err) {
+    console.error(err)
+    res.status(500).end()
+  }
+}
+
+const signOut = (req, res) => {
+  try {
+    if (req.session && req.session.user) {
+      req.session.cookie.maxAge = 0
+      req.session.user = null
+      req.session.destroy()
+      return res.status(200).end()
+    }
+    res.status(400).end()
   } catch (err) {
     console.error(err)
     res.status(500).end()
@@ -80,4 +97,4 @@ const applyToken = async (req, res, next) => {
   next()
 }
 
-export { signUp, signIn, applyToken }
+export { signUp, signIn, signOut, applyToken }

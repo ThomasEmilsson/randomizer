@@ -12,4 +12,6 @@ const connect = (database = keys.mongoURI) => {
     .catch((err) => console.log(err))
 }
 
-export { connect }
+const connection = mongoose.connection
+
+export { connect, connection }
