@@ -1,6 +1,22 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 import { keys } from '../../config/keys.js'
+import { DateIdea } from '../dateIdea/dateIdea.model.js'
+
+const partnerSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  connected: {
+    type: Boolean,
+    required: true,
+  },
+})
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -24,17 +40,17 @@ const userSchema = new mongoose.Schema({
       required: true,
       default: 'light',
     },
-    partner: {
-      email: {
-        type: String,
-        required: false,
-      },
-      connected: {
-        type: Boolean,
-        required: false,
-      },
+    partners: {
+      type: [partnerSchema],
+      default: [],
+      required: false,
     },
   },
+})
+
+userSchema.pre('findOneAndDelete', async function (next) {
+  await DateIdea.deleteMany({ created_by: this.getQuery()._id })
+  next()
 })
 
 userSchema.pre('save', function (next) {
