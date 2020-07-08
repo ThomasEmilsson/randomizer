@@ -3,20 +3,25 @@ import bcrypt from 'bcrypt'
 import { keys } from '../../config/keys.js'
 import { DateIdea } from '../dateIdea/dateIdea.model.js'
 
-const partnerSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
+const partnerSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'user',
+      required: true,
+    },
+    status: {
+      type: Number,
+      enums: [
+        0, // Connect Account
+        1, // Requested
+        2, // Pending
+        3, // Accounts Connected
+      ],
+    },
   },
-  email: {
-    type: String,
-    required: true,
-  },
-  connected: {
-    type: Boolean,
-    required: true,
-  },
-})
+  { timestamps: true }
+)
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -89,5 +94,6 @@ userSchema.methods.comparePassword = function (password) {
 }
 
 const User = mongoose.model('user', userSchema)
+const Partner = mongoose.model('partner', partnerSchema)
 
-export { User }
+export { User, Partner }

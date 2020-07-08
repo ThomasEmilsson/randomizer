@@ -2,7 +2,7 @@ import express from 'express'
 import bodyparser from 'body-parser'
 import dateIdeaRouter from './components/dateIdea/dateIdea.router.js'
 import userRouter from './components/user/user.router.js'
-import { connect, connection } from './utilities/database.js'
+import { connect } from './utilities/database.js'
 import {
   signUp,
   signIn,
@@ -10,7 +10,6 @@ import {
   applyToken,
 } from './utilities/authentication.js'
 import { session } from './utilities/sessionHandler.js'
-import { keys } from './config/keys.js'
 
 const app = express()
 const port = 3000
