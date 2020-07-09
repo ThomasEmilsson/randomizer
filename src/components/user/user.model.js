@@ -49,6 +49,13 @@ const userSchema = new mongoose.Schema({
       type: [partnerSchema],
       default: [],
       required: false,
+      validate: {
+        validator: function (v, x, z) {
+          return this.settings.partners.length <= keys.MAX_PARTNERS
+        },
+        message: (props) =>
+          `${props.value} exceeds maximum array size (${keys.MAX_PARTNERS})!`,
+      },
     },
   },
 })

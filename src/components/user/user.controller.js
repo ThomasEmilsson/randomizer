@@ -31,10 +31,6 @@ const connectRequest = async (req, res) => {
     const partner = await User.findOne({ email: req.query.email })
     const user = await User.findOne({ email: req.user.email })
 
-    // if (user.settings.partner[0] && user.settings.partner[1]) {
-    //   return res.status(400).end({ message: 'user full' })
-    // }
-
     if (!partner) {
       return res
         .status(400)
@@ -50,13 +46,6 @@ const connectRequest = async (req, res) => {
       user: partner._id,
       status: 1,
     })
-
-    // checks that user does not exist in partner
-    // partner.settings.partners[0].user != user._id &&
-    // partner.settings.partners[1].user != user._id
-
-    // user.settings.partner[0] && user.settings.partner[1]
-    // console.log(partner.settings.partners[0])
 
     // Add requesterData to partner
     if (!partner.settings.partners[0]) {
