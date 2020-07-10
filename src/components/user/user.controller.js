@@ -1,5 +1,6 @@
 import { User, Partner } from '../user/user.model.js'
 import { DateIdea } from '../dateIdea/dateIdea.model.js'
+import { keys } from '../../config/keys.js'
 
 const getCurrentUser = (req, res) => {
   if (req.user && req.session.user) res.status(200).send(req.user)
@@ -26,6 +27,10 @@ const deleteUser = async (req, res) => {
   }
 }
 
+// 1. Check if reciever exists
+// 2. Check if sender is full or reciever is full
+// 3. Check if sender exists in receiver
+// 4. Add data to each
 const connectRequest = async (req, res) => {
   try {
     const partner = await User.findOne({ email: req.query.email })
@@ -36,47 +41,45 @@ const connectRequest = async (req, res) => {
         .status(400)
         .send({ message: 'No account registered with that email' })
     }
-
-    const requesterData = new Partner({
+    const dataForPartner = new Partner({
       user: user._id,
       status: 2,
     })
 
-    const userData = new Partner({
+    const dataForUser = new Partner({
       user: partner._id,
       status: 1,
     })
 
-    // Add requesterData to partner
-    if (!partner.settings.partners[0]) {
-      console.log('Push user into Partner 0')
-      await partner.settings.partners.set(0, requesterData)
-      await partner.save()
-    } else if (!partner.settings.partners[1]) {
-      console.log('Push user into Partner 1')
-      await partner.settings.partners.set(1, requesterData)
-      await partner.save()
-    } else {
-      console.log('Partner full')
-      return res.status(400).end()
+    if (
+      user.partners.length >= keys.MAX_PARTNERS ||
+      partner.partners.length >= keys.MAX_PARTNERS
+    ) {
+      return res
+        .status(400)
+        .send({ message: 'Either you or partner has the maximum partners' })
     }
 
-    if (!user.settings.partners[0]) {
-      console.log('Push partner into User 0')
-      await user.settings.partners.set(0, userData)
-      await user.save()
-    } else if (!user.settings.partners[1]) {
-      console.log('Push partner into User 1')
-      await user.settings.partners.set(1, userData)
-      await user.save()
-    } else {
-      console.log('User full')
-      return res.status(400).end()
+    if (
+      partner.partners.some(
+        (item) => item.user.toString() === user._id.toString()
+      )
+    ) {
+      return res
+        .status(400)
+        .send({ message: 'Partner already exists in your list' })
     }
+
+    await partner.partners.push(dataForPartner)
+    await partner.save()
+
+    await user.partners.push(dataForUser)
+    await user.save()
 
     res.status(200).end()
   } catch (err) {
     console.error(err)
+    console.log('test')
     res.status(400).end()
   }
 }

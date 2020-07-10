@@ -39,23 +39,23 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  partners: {
+    type: [partnerSchema],
+    default: [],
+    required: false,
+    validate: {
+      validator: function () {
+        return this.partners.length <= keys.MAX_PARTNERS
+      },
+      message: (items) =>
+        `${items.value} exceeds maximum array size of ${keys.MAX_PARTNERS}`,
+    },
+  },
   settings: {
     theme: {
       type: String,
       required: true,
       default: 'light',
-    },
-    partners: {
-      type: [partnerSchema],
-      default: [],
-      required: false,
-      validate: {
-        validator: function (v, x, z) {
-          return this.settings.partners.length <= keys.MAX_PARTNERS
-        },
-        message: (props) =>
-          `${props.value} exceeds maximum array size (${keys.MAX_PARTNERS})!`,
-      },
     },
   },
 })
