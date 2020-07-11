@@ -17,8 +17,11 @@ const signUp = async (req, res) => {
   if (!req.body.name || !req.body.email || !req.body.password) {
     return res.status(400).send({ message: 'missing fields' })
   }
-
+  const { email } = req.body
   try {
+    if (await User.findOne({ email: email })) {
+      return res.status(400).send({ message: 'Email already used' })
+    }
     const user = await User.create(req.body)
     const token = generateToken(user)
     return res.status(201).send({ token })
@@ -31,19 +34,18 @@ const signIn = async (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).send({ message: 'missing fields' })
   }
-
   const userMessage = { message: 'Invalid email and password combination' }
 
   try {
-    const user = await User.findOne({ email: req.body.email })
-      .select('name email password')
-      .exec()
+    const user = await User.findOne({ email: req.body.email }).select(
+      'name email password'
+    )
 
     if (!user) {
       return res.status(401).send(userMessage)
     }
 
-    const match = await user.comparePassword(req.body.password)
+    const match = await user.comparePassword(user.password)
 
     if (!match) {
       return res.status(401).send(userMessage)

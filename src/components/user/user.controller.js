@@ -125,11 +125,37 @@ const acceptRequest = async (req, res) => {
   }
 }
 
+const rejectRequest = async (req, res) => {
+  try {
+    console.log(
+      '1234102934801923840192834-0198234-091823-049812-304981-2039481-029384-1023948'
+    )
+    const partner = await User.findOne({ email: req.query.email })
+    const user = await User.findOne({ email: req.user.email })
+
+    if (!partner || !user) {
+      return res.status(400).send({ message: 'Could not find partner' })
+    }
+
+    // await partner.partners.filter()
+    await partner.partners.pop({ user: user._id })
+    await partner.save()
+
+    await user.partners.pop({ user: partner._id })
+    await user.save()
+
+    res.status(200).end()
+  } catch (err) {
+    console.error(err)
+    res.status(400).end()
+  }
+}
 const controller = {
   getCurrentUser: getCurrentUser,
   deleteUser: deleteUser,
   connectRequest: connectRequest,
   acceptRequest: acceptRequest,
+  rejectRequest: rejectRequest,
 }
 
 export default controller

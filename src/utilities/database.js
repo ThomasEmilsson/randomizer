@@ -7,6 +7,7 @@ const connect = (database = keys.mongoURI) => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
+      useCreateIndex: true,
     })
     .then(() => console.log('Connection to Database: Successful'))
     .catch((err) => console.log(err))
