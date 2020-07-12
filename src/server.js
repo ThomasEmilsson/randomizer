@@ -2,6 +2,7 @@ import express from 'express'
 import bodyparser from 'body-parser'
 import dateIdeaRouter from './components/dateIdea/dateIdea.router.js'
 import userRouter from './components/user/user.router.js'
+import emailRouter from './components/email/email.router.js'
 import { connect } from './utilities/database.js'
 import {
   signUp,
@@ -28,8 +29,11 @@ app.post('/signUp', signUp)
 app.post('/signIn', signIn)
 app.post('/signOut', signOut)
 
+app.use('/email', emailRouter)
 app.use('/api', applyToken)
 app.use('/api/user', userRouter)
 app.use('/api/dateIdea', dateIdeaRouter)
+
+// console.log(mailer().then(console.log('hello')))
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))

@@ -150,6 +150,7 @@ const rejectRequest = async (req, res) => {
     res.status(400).end()
   }
 }
+
 const controller = {
   getCurrentUser: getCurrentUser,
   deleteUser: deleteUser,
