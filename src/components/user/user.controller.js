@@ -55,9 +55,9 @@ const connectRequest = async (req, res) => {
       user.partners.length >= keys.MAX_PARTNERS ||
       partner.partners.length >= keys.MAX_PARTNERS
     ) {
-      return res
-        .status(400)
-        .send({ message: 'Either you or partner has the maximum partners' })
+      return res.status(400).send({
+        message: 'Either you or partner has the maximum number of partners',
+      })
     }
 
     if (
@@ -84,6 +84,9 @@ const connectRequest = async (req, res) => {
   }
 }
 
+// Get partner and user details
+// Find index in partner list for each
+// Update to Status 3 for each
 const acceptRequest = async (req, res) => {
   try {
     const partner = await User.findOne({ email: req.query.email })
@@ -124,19 +127,41 @@ const acceptRequest = async (req, res) => {
   }
 }
 
+// Get partner and user details
+// Remove details of each other in each list
 const rejectRequest = async (req, res) => {
   try {
-    console.log(
-      '1234102934801923840192834-0198234-091823-049812-304981-2039481-029384-1023948'
-    )
     const partner = await User.findOne({ email: req.query.email })
     const user = await User.findOne({ email: req.user.email })
 
     if (!partner || !user) {
-      return res.status(400).send({ message: 'Could not find partner' })
+      return res.status(400).send({ message: 'Could not reject request' })
     }
 
-    // await partner.partners.filter()
+    await partner.partners.pop({ user: user._id })
+    await partner.save()
+
+    await user.partners.pop({ user: partner._id })
+    await user.save()
+
+    res.status(200).end()
+  } catch (err) {
+    console.error(err)
+    res.status(400).end()
+  }
+}
+
+// Get partner and user details
+// Remove details of each other in each list
+const cancelRequest = async (req, res) => {
+  try {
+    const partner = await User.findOne({ email: req.query.email })
+    const user = await User.findOne({ email: req.user.email })
+
+    if (!partner || !user) {
+      return res.status(400).send({ message: 'Could not cancel request' })
+    }
+
     await partner.partners.pop({ user: user._id })
     await partner.save()
 
@@ -156,6 +181,7 @@ const controller = {
   connectRequest: connectRequest,
   acceptRequest: acceptRequest,
   rejectRequest: rejectRequest,
+  cancelRequest: cancelRequest,
 }
 
 export default controller
