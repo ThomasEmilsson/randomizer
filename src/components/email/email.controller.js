@@ -32,9 +32,9 @@ const verifyAccountEmail = async (req, res) => {
 }
 
 const testEmail = async (req, res) => {
-  try {
-    const recipient = req.body.recipient
+  const recipient = req.body.recipient
 
+  try {
     let info = await transporter.sendMail({
       from: keys.auth.emailFrom, // sender address
       to: recipient, // list of receivers
@@ -42,6 +42,13 @@ const testEmail = async (req, res) => {
       text: 'Welcome to Cozy!', // plain text body
       html: '<b>Welcome to Cozy!</b>', // html body
     })
+
+    console.log('info.messageId: ' + info.messageId)
+    console.log('info.envelope: ' + info.envelope)
+    console.log('info.accepted: ' + info.accepted)
+    console.log('info.rejected: ' + info.rejected)
+    console.log('info.pending: ' + info.pending)
+    console.log('info.response: ' + info.response)
 
     return res.status(200).end()
   } catch (err) {

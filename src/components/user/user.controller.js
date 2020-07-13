@@ -9,10 +9,9 @@ const getCurrentUser = (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
+  // console.log(req.params.id)
   try {
-    const user = await User.findByIdAndDelete({
-      _id: req.params.id,
-    })
+    const user = await User.findByIdAndDelete(req.params.id)
 
     if (!user)
       return res.status(400).send({ message: 'No user found to delete' })

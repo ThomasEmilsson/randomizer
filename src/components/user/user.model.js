@@ -60,8 +60,20 @@ const userSchema = new mongoose.Schema({
   },
 })
 
+// Delete All DateIdeas and update partners
 userSchema.pre('findOneAndDelete', async function (next) {
-  await DateIdea.deleteMany({ created_by: this.getQuery()._id })
+  const id = this.getQuery()._id
+  await DateIdea.deleteMany({ created_by: id })
+
+  const user = await User.findById(id)
+  const partnerListOfIds = await user.partners.map((partner) => partner.user)
+
+  partnerListOfIds.forEach(async (id) => {
+    const partnerToUpdate = await User.findById(id)
+    await partnerToUpdate.partners.pop({ user: user._id })
+    await partnerToUpdate.save()
+  })
+
   next()
 })
 
