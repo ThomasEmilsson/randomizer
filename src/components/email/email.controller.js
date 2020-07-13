@@ -6,8 +6,12 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true, // true for 465, false for other ports
   auth: {
-    user: keys.EMAIL, // generated ethereal user
-    pass: keys.EMAIL_PASS, // generated ethereal password
+    user: keys.auth.email, // generated ethereal user
+    pass: keys.auth.emailPass, // generated ethereal password
+    clientId: keys.auth.clientId,
+    clientSecret: keys.auth.clientSecret,
+    refreshToken: keys.auth.refreshToken,
+    accessToken: keys.auth.accessToken,
   },
 })
 
@@ -32,7 +36,7 @@ const testEmail = async (req, res) => {
     const recipient = req.body.recipient
 
     let info = await transporter.sendMail({
-      from: keys.EMAIL_FROM, // sender address
+      from: keys.auth.emailFrom, // sender address
       to: recipient, // list of receivers
       subject: 'Hello from Cozy', // Subject line
       text: 'Welcome to Cozy!', // plain text body
