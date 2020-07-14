@@ -13,7 +13,7 @@ import {
 import { session } from './utilities/sessionHandler.js'
 
 const app = express()
-const port = 3000
+const port = 3500
 
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
