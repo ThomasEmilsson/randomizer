@@ -1,4 +1,4 @@
-import { User, Partner } from '../user/user.model.js'
+import { User, Partner } from './user.model.js'
 import { DateIdea } from '../dateIdea/dateIdea.model.js'
 import { keys } from '../../config/keys.js'
 import { log } from 'console'

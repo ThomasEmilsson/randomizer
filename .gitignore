@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Config
-src/config/*
+server/config/*

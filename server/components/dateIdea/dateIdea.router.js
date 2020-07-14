@@ -1,5 +1,5 @@
 import Router from 'express'
-import dateIdeaController from '../dateIdea/dateIdea.controller.js'
+import dateIdeaController from './dateIdea.controller.js'
 const router = Router()
 
 router
