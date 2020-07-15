@@ -1,0 +1,36 @@
+$themes: (light: (background: #fff,
+        foreground: #000,
+        accent: #093,
+    ),
+    dark: (background: #22272a,
+        foreground: #989ea0,
+        accent: #896256,
+    ),
+);
+
+$_current-theme: null;
+
+@function theme($name) {
+    @if ($_current-theme==null) {
+        @error "theme() function should only be used into code that is wrapped by 'theme' mixin";
+    }
+
+    @if (not map-has-key(map-get($themes, $_current-theme), $name)) {
+        @warn "Unknown theme key '#{$name}' for theme '#{$_current-theme}'";
+        @return null;
+    }
+
+    @return map-get(map-get($themes, $_current-theme), $name);
+}
+
+@mixin theme() {
+    @each $theme in map-keys($themes) {
+        $_current-theme: $theme !global;
+
+        .theme-#{$theme} & {
+            @content;
+        }
+    }
+
+    $_current-theme: null !global;
+}

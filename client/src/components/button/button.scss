@@ -1,0 +1,7 @@
+@use "../themes.scss";
+
+
+body button {
+    background: theme(light);
+    color: #334;
+}
