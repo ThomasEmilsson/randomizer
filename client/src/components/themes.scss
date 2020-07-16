@@ -1,5 +1,5 @@
-$themes: (light: (background: #fff,
-        foreground: #000,
+$themes: (light: (background: #369,
+        foreground: #127,
         accent: #093,
     ),
     dark: (background: #22272a,
@@ -27,7 +27,7 @@ $_current-theme: null;
     @each $theme in map-keys($themes) {
         $_current-theme: $theme !global;
 
-        .theme-#{$theme} & {
+        &.theme-#{$theme} {
             @content;
         }
     }
