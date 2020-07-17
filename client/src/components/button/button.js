@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './button.scss'
 
 const Button = (props) => {
-  const { theme } = props
-  function changeToTheme(e) {
-    e.preventDefault()
-  }
+  const [theme, setTheme] = useState('theme-default')
+
   return (
     <div>
-      <button onClick={changeToTheme} className={props.theme}>
+      <button
+        onClick={(e) => setTheme(e.target.value)}
+        value={props.value}
+        className={theme}
+      >
         {props.text}
       </button>
     </div>
