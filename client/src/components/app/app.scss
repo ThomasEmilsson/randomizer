@@ -9,5 +9,13 @@ body {
     background-color: theme(background);
     color: theme(foreground);
   }
+}
 
+button {
+  border-radius: 4px;
+
+  @include theme() {
+    background-color: theme(foreground);
+    color: theme(accent);
+  }
 }

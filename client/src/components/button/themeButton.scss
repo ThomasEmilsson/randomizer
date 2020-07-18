@@ -4,7 +4,7 @@ button {
     border-radius: 4px;
 
     @include theme() {
-        background-color: theme(background);
-        color: theme(foreground);
+        background-color: theme(accent);
+        color: theme(background);
     }
 }
