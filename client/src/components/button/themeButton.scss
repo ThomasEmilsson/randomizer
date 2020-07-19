@@ -1,10 +1,10 @@
-@import "../themes.scss";
+@import '../themes.scss';
 
 button {
-    border-radius: 4px;
+  border-radius: 4px;
 
-    @include theme() {
-        background-color: theme(accent);
-        color: theme(background);
-    }
+  @include theme() {
+    background-color: theme(background-main);
+    color: theme(text-main);
+  }
 }

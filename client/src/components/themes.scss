@@ -1,39 +1,49 @@
-$themes: (default: (background:#276,
-        foreground: #229,
-        accent: #386),
-    light: (background: #369,
-        foreground: #127,
-        accent: #093,
-    ),
-    dark: (background: #22272a,
-        foreground: #989ea0,
-        accent: #896256,
-    ),
+$themes: (
+  dark: (
+    background-main: #1d2225,
+    background-focus: #22272a,
+    background-hover: #4b5053,
+    text-main: #fefffe,
+    text-secondary: #3c4244,
+    text-subtle: #2f3437,
+    menu: #896256,
+    accent: #386,
+  ),
+  light: (
+    background-main: #ebecf2,
+    background-focus: #e8eded,
+    background-hover: #4b5053,
+    text-main: #666668,
+    text-secondary: #afa9ae,
+    text-subtle: #c2c2cb,
+    menu: #593131,
+    accent: #783,
+  ),
 );
 
 $_current-theme: null;
 
 @function theme($name) {
-    @if ($_current-theme==null) {
-        @error "theme() function should only be used into code that is wrapped by 'theme' mixin";
-    }
+  @if ($_current-theme==null) {
+    @error "theme() function should only be used into code that is wrapped by 'theme' mixin";
+  }
 
-    @if (not map-has-key(map-get($themes, $_current-theme), $name)) {
-        @warn "Unknown theme key '#{$name}' for theme '#{$_current-theme}'";
-        @return null;
-    }
+  @if (not map-has-key(map-get($themes, $_current-theme), $name)) {
+    @warn "Unknown theme key '#{$name}' for theme '#{$_current-theme}'";
+    @return null;
+  }
 
-    @return map-get(map-get($themes, $_current-theme), $name);
+  @return map-get(map-get($themes, $_current-theme), $name);
 }
 
 @mixin theme() {
-    @each $theme in map-keys($themes) {
-        $_current-theme: $theme !global;
+  @each $theme in map-keys($themes) {
+    $_current-theme: $theme !global;
 
-        &.theme-#{$theme} {
-            @content;
-        }
+    &.theme-#{$theme} {
+      @content;
     }
+  }
 
-    $_current-theme: null !global;
+  $_current-theme: null !global;
 }

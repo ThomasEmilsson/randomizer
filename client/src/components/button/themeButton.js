@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './themeButton.scss'
-import stuff from '../themes.scss'
 
 const ThemeButton = (props) => {
-  const [theme, setTheme] = useState('theme-light')
+  const { updateTheme } = props
 
   return (
     <div>
-      <button onClick={(e) => setTheme(e.target.value)} value={props}>
-        {props.text}
-      </button>
+      <button onClick={() => updateTheme(props.value)}>{props.text}</button>
     </div>
   )
 }

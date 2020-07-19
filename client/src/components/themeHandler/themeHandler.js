@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import updateDocument from './updateDocument.js'
 import ThemeButton from '../button/themeButton.js'
-const Button = (props) => {
+
+const ThemeHandler = (props) => {
   const [theme, setTheme] = useState('theme-light')
 
   useEffect(() => {
@@ -12,31 +13,18 @@ const Button = (props) => {
   return (
     <div>
       <p> Current Theme = {theme}</p>
-      <button
-        onClick={(e) => setTheme(e.target.value)}
-        value="theme-default"
-        // className={theme}
-      >
-        Set to Default Theme
-      </button>
-      <br />
-      <button
-        onClick={(e) => setTheme(e.target.value)}
+      <ThemeButton
         value="theme-light"
-        // className={theme}
-      >
-        Set to Light Theme
-      </button>
-      <br />
-      <button
-        onClick={(e) => setTheme(e.target.value)}
+        text="Set to Light Theme"
+        updateTheme={setTheme}
+      />
+      <ThemeButton
         value="theme-dark"
-        // className={theme}
-      >
-        Set To Dark Theme
-      </button>
+        text="Set to Dark Theme"
+        updateTheme={setTheme}
+      />
     </div>
   )
 }
 
-export default Button
+export default ThemeHandler
