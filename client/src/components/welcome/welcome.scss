@@ -26,11 +26,7 @@
 }
 
 .button-login:hover {
-    transform: scale(1.02);
-    background-color: #4b5053;
-    border-color: #4b5053;
-    color: #EEE;
-
+    transform: scale(1.05);
 
     @include theme() {
         background-color: theme(background-hover);
@@ -47,8 +43,11 @@
 }
 
 .button-signup:hover {
-    background-color: #4b5053;
-    border-color: #4b5053;
-    color: #EEE;
-    transform: scale(1.02)
+    transform: scale(1.05);
+
+    @include theme() {
+        background-color: #4b5053;
+        border-color: #4b5053;
+        color: #EEE;
+    }
 }

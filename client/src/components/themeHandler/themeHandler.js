@@ -8,7 +8,7 @@ const ThemeHandler = (props) => {
   useEffect(() => {
     updateDocument.updateClasses('body', theme)
     updateDocument.updateClasses('button', theme)
-    updateDocument.updateClasses('panel', theme)
+    updateDocument.updateClasses('.panel', theme)
   })
 
   return (

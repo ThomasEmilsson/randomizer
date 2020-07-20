@@ -11,7 +11,6 @@ const Welcome = (props) => {
         <img className="logo-sub" src={logo} alt="date-night-logo" />
         <button className="button-login">Login</button>
         <button className="button-signup">Sign Up</button>
-        {/* <ThemeHandler /> */}
       </div>
     </div>
   )
