@@ -1,5 +1,6 @@
 import express from 'express'
 import bodyparser from 'body-parser'
+import cors from 'cors'
 import dateIdeaRouter from './components/dateIdea/dateIdea.router.js'
 import userRouter from './components/user/user.router.js'
 import emailRouter from './components/email/email.router.js'
@@ -17,6 +18,7 @@ const port = 3500
 
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
+app.use(cors())
 
 connect()
 app.use(session)

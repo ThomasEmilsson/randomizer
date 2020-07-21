@@ -3,8 +3,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.7;
-  background-color: #1d2225; // TODO: remove
-  color: #22272a; // TODO: remove
+  // background-color: #1d2225; // TODO: remove
+  // color: #22272a; // TODO: remove
 
   @include theme() {
     background-color: theme(background-main);
