@@ -1,12 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import './welcome.scss'
 import logo from '../../images/logo-test.png'
-import ThemeHandler from '../themeHandler/themeHandler'
 import { Link } from 'react-router-dom'
-import test from '../helpers/requests.js'
+import test from '../../api/requests.js'
 import ThemeContext from '../helpers/themeContext'
+import updateDocument from '../themeHandling/updateDocument.js'
 
-import updateDocument from '../themeHandler/updateDocument.js'
 const Welcome = (props) => {
   const [theme] = useContext(ThemeContext)
 
