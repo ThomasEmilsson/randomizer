@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 const ThemeUpdater = (props) => {
   const [theme, setTheme] = useContext(ThemeContext)
+
   return (
     <div>
       <p>{theme}</p>

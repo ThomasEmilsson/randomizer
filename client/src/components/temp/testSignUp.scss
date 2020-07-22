@@ -1,15 +1,15 @@
 @import '../themes.scss';
 
-.welcome .grid-container {
+.grid-container {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 0.8fr 1.4fr 0.8fr;
     gap: 1px 1px;
 }
 
-.welcome .panel {
+.panel {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 3fr;
     grid-template-rows: repeat(5, 20%);
     grid-area: 1 / 2 / 2 / 3;
     place-items: center;
@@ -17,32 +17,34 @@
     @include theme() {
         background-color: theme(background-focus);
     }
-
 }
 
-.welcome .button-login {
-    height: 40px;
+.form-signup input {
     width: 200px;
+    height: 30px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
-.welcome .button-login:hover {
-    transform: scale(1.05);
+.section-password {
+    padding-bottom: 20px;
+}
 
-    @include theme() {
-        background-color: theme(background-hover);
-        border-color: theme(background-hover);
-        color: theme(text-main);
-    }
+
+
+.form-signup label input {
+    display: grid;
 
 }
 
-.welcome .button-signup {
+.button-signup {
     margin: 0;
     height: 40px;
     width: 200px;
+
 }
 
-.welcome .button-signup:hover {
+.button-signup:hover {
     transform: scale(1.05);
 
     @include theme() {

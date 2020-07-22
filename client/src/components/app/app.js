@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import stickyHook from '../helpers/stickyHook.js'
 import updateDocument from '../themeHandling/updateDocument.js'
 import ThemeContext from '../helpers/themeContext'
-
+import SignUp from '../temp/testSignUp'
 const App = () => {
   const themeHook = stickyHook(useState('theme-dark'))
 
@@ -22,6 +22,7 @@ const App = () => {
       <Router>
         <Route exact path="/" component={Welcome} />
         <Route path="/settings" component={ThemeUpdater} />
+        <Route path="/signup" component={SignUp} />
       </Router>
     </ThemeContext.Provider>
   )
