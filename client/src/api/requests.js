@@ -1,14 +1,18 @@
 import axios from 'axios'
 
-const testPost = async () => {
-  const params = {
-    name: 'thomas',
-    email: 'thomas@gmail.com',
-    password: '1234',
+const testPost = async ({ name, email, password }) => {
+  const data = {
+    name: name,
+    email: email,
+    password: password,
   }
-  const response = await axios.post('http://localhost:3500/signUp', params)
-  console.log(response)
-  return response.data
+  try {
+    const response = await axios.post('http://localhost:3500/signUp', data)
+    console.log(response.data)
+    return response.data
+  } catch (err) {
+    return err.response
+  }
 }
 
 export default { testPost }
