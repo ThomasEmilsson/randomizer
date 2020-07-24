@@ -1,0 +1,55 @@
+@import '../themes.scss';
+
+.grid-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 0.8fr 1.4fr 0.8fr;
+    gap: 1px 1px;
+}
+
+.panel {
+    display: grid;
+    grid-template-columns: 3fr;
+    grid-template-rows: repeat(5, 20%);
+    grid-area: 1 / 2 / 2 / 3;
+    place-items: center;
+
+    @include theme() {
+        background-color: theme(background-focus);
+    }
+}
+
+.form-signin input {
+    width: 200px;
+    height: 30px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.section-password {
+    padding-bottom: 20px;
+}
+
+
+
+.form-signin label input {
+    display: grid;
+
+}
+
+.button-signin {
+    margin: 0;
+    height: 40px;
+    width: 200px;
+
+}
+
+.button-signin:hover {
+    transform: scale(1.05);
+
+    @include theme() {
+        background-color: #4b5053;
+        border-color: #4b5053;
+        color: #EEE;
+    }
+}

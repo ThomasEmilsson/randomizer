@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
 import ThemeContext from '../helpers/themeContext'
-import './testSignUp.scss'
-import { signUp, signIn } from '../../api/authentication.js'
+import './signUp.scss'
+import { signUp } from '../../api/authentication.js'
 
-const TestSignUp = () => {
+const SignUp = () => {
   const [theme] = useContext(ThemeContext)
   const [data, setData] = useState({
     name: '',
@@ -19,11 +19,13 @@ const TestSignUp = () => {
     }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    signUp(data)
-    // test.testPost(data)
+    let res = await signUp(data)
+    if (res.token) console.log(res.token)
+    else console.log(res.status)
   }
+
   return (
     <div className="grid-container">
       <div className={`panel ${theme}`}>
@@ -76,4 +78,4 @@ const TestSignUp = () => {
   )
 }
 
-export default TestSignUp
+export default SignUp

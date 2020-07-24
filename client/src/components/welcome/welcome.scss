@@ -51,3 +51,19 @@
         color: #EEE;
     }
 }
+
+.welcome .button-signin {
+    margin: 0;
+    height: 40px;
+    width: 200px;
+}
+
+.welcome .button-signin:hover {
+    transform: scale(1.05);
+
+    @include theme() {
+        background-color: #4b5053;
+        border-color: #4b5053;
+        color: #EEE;
+    }
+}
