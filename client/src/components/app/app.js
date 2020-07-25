@@ -4,7 +4,7 @@ import '../themes.scss'
 import ThemeUpdater from '../themeHandling/themeUpdater.js'
 import Welcome from '../welcome/welcome.js'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import stickyHook from '../helpers/stickyHook.js'
+import stickyState from '../helpers/stickyHook.js'
 import updateDocument from '../themeHandling/updateDocument.js'
 import ThemeContext from '../helpers/themeContext'
 import SignUp from '../signUp/signUp.js'
@@ -12,8 +12,8 @@ import SignIn from '../signIn/signIn.js'
 import UserContext from '../helpers/userContext'
 
 const App = () => {
-  const themeHook = stickyHook(useState('theme-dark'))
-  const userHook = stickyHook(useState(''))
+  const themeHook = stickyState('theme-dark', 'theme')
+  const userHook = stickyState('', 'user')
 
   useEffect(() => {
     updateDocument.updateClasses('body', themeHook[0])
@@ -22,14 +22,17 @@ const App = () => {
   })
 
   return (
-    <ThemeContext.Provider value={themeHook}>
-      <Router>
-        <Route exact path="/" component={Welcome} />
-        <Route path="/settings" component={ThemeUpdater} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/signin" component={SignIn} />
-      </Router>
-    </ThemeContext.Provider>
+    <UserContext.Provider value={userHook[0]}>
+      <ThemeContext.Provider value={themeHook}>
+        <Router>
+          <Route exact path="/" component={Welcome} />
+          <Route path="/settings" component={ThemeUpdater} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/signin" component={SignIn} />
+          <Route path="/theme" component={ThemeUpdater} />
+        </Router>
+      </ThemeContext.Provider>
+    </UserContext.Provider>
   )
 }
 

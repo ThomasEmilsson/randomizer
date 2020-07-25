@@ -3,7 +3,6 @@ import React from 'react'
 function useStickyState(defaultValue, key) {
   const [value, setValue] = React.useState(() => {
     const stickyValue = window.localStorage.getItem(key)
-
     return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
   })
 
