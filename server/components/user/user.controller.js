@@ -79,7 +79,6 @@ const connectRequest = async (req, res) => {
     res.status(200).end()
   } catch (err) {
     console.error(err)
-    console.log('test')
     res.status(400).end()
   }
 }

@@ -21,8 +21,8 @@ const Welcome = (props) => {
       <div className="grid-container">
         <div className="panel">
           <img className="logo" src={logo} alt="cozy-logo" />
-          <img className="logo-sub" src={logo} alt="date-night-logo" />
-
+          {/* <img className="logo-sub" src={logo} alt="date-night-logo" /> */}
+          <h1>{'- ' + user.toString() + ' -'}</h1>
           <Link to="/signin">
             <button className="button-signin">Sign In</button>
           </Link>

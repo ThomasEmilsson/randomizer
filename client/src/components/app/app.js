@@ -14,15 +14,15 @@ import UserContext from '../helpers/userContext'
 const App = () => {
   const themeHook = stickyState('theme-dark', 'theme')
   const userHook = stickyState('', 'user')
-
   useEffect(() => {
+    localStorage.clear()
     updateDocument.updateClasses('body', themeHook[0])
     updateDocument.updateClasses('button', themeHook[0])
     updateDocument.updateClasses('.panel', themeHook[0])
   })
 
   return (
-    <UserContext.Provider value={userHook[0]}>
+    <UserContext.Provider value={userHook}>
       <ThemeContext.Provider value={themeHook}>
         <Router>
           <Route exact path="/" component={Welcome} />

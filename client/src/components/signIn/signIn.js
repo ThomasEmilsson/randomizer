@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import ThemeContext from '../helpers/themeContext'
 import './signIn.scss'
 import { signIn } from '../../api/authentication.js'
+import { Link } from 'react-router-dom'
 
 const SignIn = () => {
   const [theme] = useContext(ThemeContext)
@@ -60,6 +61,10 @@ const SignIn = () => {
             </button>
           </section>
         </form>
+        <Link to="/">
+          {' '}
+          <button className="button-back">Go Back</button>
+        </Link>
       </div>
     </div>
   )
