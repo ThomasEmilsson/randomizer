@@ -10,6 +10,7 @@ const SignIn = () => {
     email: '',
     password: '',
   })
+  const [error, setError] = useState('')
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -21,9 +22,15 @@ const SignIn = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let res = await signIn(data)
-    if (res.token) console.log(res.token)
-    else console.log(res.status)
+    if (data.email == '') {
+      setError('email missing')
+    } else if (data.password == '') {
+      setError('password missing')
+    } else {
+      let res = await signIn(data)
+      if (res.token) console.log(res.token)
+      else setError('Incorrect email or password')
+    }
   }
 
   return (
@@ -49,7 +56,7 @@ const SignIn = () => {
               <input
                 value={data.password}
                 onChange={handleChange}
-                type="text"
+                type="password"
                 name="password"
                 placeholder="password"
               />
@@ -61,6 +68,7 @@ const SignIn = () => {
             </button>
           </section>
         </form>
+        <span className="form-errors">{error}</span>
         <Link to="/">
           {' '}
           <button className="button-back">Go Back</button>

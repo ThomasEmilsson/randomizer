@@ -11,6 +11,7 @@ const SignUp = () => {
     email: '',
     password: '',
   })
+  const [error, setError] = useState('')
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -22,9 +23,17 @@ const SignUp = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let res = await signUp(data)
-    if (res.token) console.log(res.token)
-    else console.log(res.status)
+    if (data.name == '') {
+      setError('name required')
+    } else if (data.email == '') {
+      setError('email required')
+    } else if (data.password == '') {
+      setError('password required')
+    } else {
+      let res = await signUp(data)
+      if (res.token) console.log(res.token)
+      else setError('something went wrong, try again')
+    }
   }
 
   return (
@@ -74,6 +83,7 @@ const SignUp = () => {
             </button>
           </section>
         </form>
+        <span className="form-errors">{error}</span>
         <Link to="/">
           {' '}
           <button className="button-back">Go Back</button>
