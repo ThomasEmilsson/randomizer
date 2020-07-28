@@ -1,23 +1,52 @@
 .home .grid-container {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr;
-    grid-template-rows: 0.25fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 3fr;
+    grid-template-rows: 0.25fr 3fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
 
 .home .nav {
-    background-color: red;
-    grid-area: 1 / 1 / 5 / 2;
+    display: grid;
+    // justify-content: center;
+    grid-area: 1 / 1 / 3 / 2;
+    grid-template-rows: 0.25fr 0.75fr 0.5fr 0.25fr;
+    // grid-template-columns: auto;
+}
+
+.home .logo-user {
+    display: grid;
+    place-items: center;
+    border-bottom: 1px solid black;
+
+}
+
+.home .logo-user .logo {}
+
+.home .options-card {
+    display: grid;
+    place-items: center;
+
+}
+
+.home .options-user {
+    display: grid;
+    place-items: center;
+
+}
+
+.home .logo-app {
+    display: grid;
+    place-items: center;
 }
 
 .home .title {
     background-color: blue;
-    grid-area: 1 / 2 / 2 / 5;
+    grid-area: 1 / 2 / 2 / 2;
 }
 
 .home .cards {
     background-color: orange;
-    grid-area: 2 / 2 / 5 / 5;
+    grid-area: 2 / 2 / 3 / 3;
 }
