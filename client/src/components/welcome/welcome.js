@@ -21,7 +21,7 @@ const Welcome = (props) => {
       <div className="grid-container">
         <div className="panel">
           <img className="logo" src={logo} alt="cozy-logo" />
-          <h1>{'- ' + user.toString() + ' -'}</h1>
+          <h1>{'- ' + user.email + ' -'}</h1>
           <Link to="/signin">
             <button className="button-signin">Sign In</button>
           </Link>

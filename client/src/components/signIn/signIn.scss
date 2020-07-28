@@ -1,13 +1,13 @@
 @import '../themes.scss';
 
-.grid-container {
+.sign-in .grid-container {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 0.8fr 1.4fr 0.8fr;
     gap: 1px 1px;
 }
 
-.panel {
+.sign-in .panel {
     display: grid;
     grid-template-columns: 3fr;
     grid-template-rows: repeat(5, 20%);
@@ -19,36 +19,36 @@
     }
 }
 
-.form-signin input {
+.sign-in .form-signin input {
     width: 200px;
     height: 30px;
     box-sizing: border-box;
     margin-bottom: 10px;
 }
 
-.section-password {
+.sign-in .section-password {
     padding-bottom: 20px;
 }
 
 
 
-.form-signin label input {
+.sign-in .form-signin label input {
     display: grid;
 
 }
 
-.button-signin {
+.sign-in .button-signin {
     margin: 0;
     height: 40px;
     width: 200px;
 
 }
 
-.form-errors {
+.sign-in .form-errors {
     color: red;
 }
 
-.button-signin:hover {
+.sign-in .button-signin:hover {
     transform: scale(1.05);
 
     @include theme() {

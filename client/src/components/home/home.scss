@@ -1,0 +1,23 @@
+.home .grid-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr;
+    grid-template-rows: 0.25fr 1fr 1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.home .nav {
+    background-color: red;
+    grid-area: 1 / 1 / 5 / 2;
+}
+
+.home .title {
+    background-color: blue;
+    grid-area: 1 / 2 / 2 / 5;
+}
+
+.home .cards {
+    background-color: orange;
+    grid-area: 2 / 2 / 5 / 5;
+}

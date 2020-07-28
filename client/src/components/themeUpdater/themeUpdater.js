@@ -1,19 +1,20 @@
-import React, { useContext } from 'react'
-import ThemeButton from './themeButton.js'
+import React, { useState, useEffect, useContext } from 'react'
+import updateDocument from './updateDocument.js'
+import ThemeButton from '../themeHandling/themeButton.js'
+import stickyHook from '../helpers/stickyHook.js'
 import ThemeContext from '../helpers/themeContext'
 import { Link } from 'react-router-dom'
 
 const ThemeUpdater = (props) => {
   const [theme, setTheme] = useContext(ThemeContext)
-
   return (
     <div>
       <p>{theme}</p>
+
       <Link to="/">
         {' '}
         <button className="button-back">Go Back</button>
       </Link>
-      <br />
       <ThemeButton
         value="theme-light"
         text="Set to Light Theme"
