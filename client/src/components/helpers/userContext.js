@@ -1,5 +1,8 @@
 import { createContext } from 'react'
 
-const UserContext = createContext([{ email: '', token: '' }, () => {}])
+const UserContext = createContext([
+  { name: '', email: '', token: '' },
+  () => {},
+])
 
 export default UserContext
