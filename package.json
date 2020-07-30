@@ -20,6 +20,7 @@
     "cuid": "^2.1.8",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.21",
     "nodemailer": "^6.4.10"
