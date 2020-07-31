@@ -7,6 +7,25 @@ const Home = () => {
   const [theme] = useContext(ThemeContext)
   const [user] = useContext(UserContext)
 
+  const datesList = [
+    {
+      name: 'Wine & Dine',
+      location: 'Home',
+      description: 'drink wine at home',
+      price: '$',
+      topics: ['Moving Plans', 'Puppy Plans'],
+      type: ['Cozy', 'Casual'],
+    },
+    {
+      name: 'Fancy Date Night Out',
+      location: 'Expensive Restaurant',
+      description: 'Dress up and go to expensive restaurant',
+      price: '$$$',
+      topics: ['Dream Vacation', 'Career Hopes'],
+      type: ['Fancy', 'Romantic'],
+    },
+  ]
+
   const letterExtractor = () => {
     if (user.name === '') {
       return user.email.charAt(0)
@@ -41,6 +60,13 @@ const Home = () => {
 
         <div className={`title ${theme}`}>date cards</div>
         <div className="cards">
+          {datesList.map((idea) => (
+            <div className={`card-date ${theme}`}>
+              <p>{idea.name}</p>
+              <p>{user.name === '' ? 'by Thomas' : 'by Thomas'}</p>
+            </div>
+          ))}
+          {/* <div className="card-date">[]</div>
           <div className="card-date">[]</div>
           <div className="card-date">[]</div>
           <div className="card-date">[]</div>
@@ -60,8 +86,7 @@ const Home = () => {
           <div className="card-date">[]</div>
           <div className="card-date">[]</div>
           <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
+          <div className="card-date">[]</div> */}
         </div>
       </div>
     </div>
