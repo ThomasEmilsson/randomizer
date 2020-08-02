@@ -9,11 +9,6 @@ const ThemeUpdater = (props) => {
   return (
     <div>
       <p>{theme}</p>
-      <Link to="/">
-        {' '}
-        <button className="button-back">Go Back</button>
-      </Link>
-      <br />
       <ThemeButton
         value="theme-light"
         text="Set to Light Theme"
@@ -24,6 +19,11 @@ const ThemeUpdater = (props) => {
         text="Set to Dark Theme"
         updateTheme={setTheme}
       />
+
+      <Link to="/">
+        {' '}
+        <button className="button-back">Go Back</button>
+      </Link>
     </div>
   )
 }

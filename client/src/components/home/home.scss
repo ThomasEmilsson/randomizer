@@ -61,11 +61,6 @@ body {
   }
 }
 
-.home .title:hover {
-  transform-origin: left;
-  transform: scale(1.2);
-}
-
 .home .cards {
   grid-area: 2 / 2 / 3 / 3;
   display: grid;

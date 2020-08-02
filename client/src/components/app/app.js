@@ -27,12 +27,11 @@ const App = () => {
     <UserContext.Provider value={userHook}>
       <ThemeContext.Provider value={themeHook}>
         <Router>
-          <Route exact path="/home" component={Welcome} />
-          <Route path="/settings" component={ThemeUpdater} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/theme" component={ThemeUpdater} />
-          <Route path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/theme" component={ThemeUpdater} />
+          <Route exact path="/" component={Welcome} />
         </Router>
       </ThemeContext.Provider>
     </UserContext.Provider>
