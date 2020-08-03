@@ -31,7 +31,37 @@ body {
   place-items: center;
 }
 
-.home .logo-user .logo {
+.home .logo-user .logo {}
+
+.home .option-settings:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.home .option-shuffle:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.home .option-show-cards:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+
+.home .option-log-out:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.home .option-filter:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.home .option-add-card:hover {
+  transform: scale(1.15);
+  cursor: pointer;
 }
 
 .home .options-card {
@@ -102,6 +132,7 @@ body {
   color: #ffffff;
   margin-bottom: 0px;
 }
+
 .home .card-date p:last-child {
   font-family: 'Futura PT, Light';
   font-size: 24px;

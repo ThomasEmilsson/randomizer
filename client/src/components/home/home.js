@@ -1,9 +1,12 @@
 import React, { useContext } from 'react'
+import Settings from '../home/settings'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import './home.scss'
+import { Link, useHistory } from 'react-router-dom'
 
 const Home = () => {
+  let history = useHistory()
   const [theme] = useContext(ThemeContext)
   const [user] = useContext(UserContext)
 
@@ -26,6 +29,15 @@ const Home = () => {
     },
   ]
 
+  const loadSettings = () => {
+    history.push('/settings')
+  }
+  const loadShuffle = () => {}
+  const loadAddCard = () => {}
+  const loadFilter = () => {}
+  const loadShowCards = () => {}
+  const logout = () => {}
+
   const letterExtractor = () => {
     if (user.name === '') {
       return user.email.charAt(0)
@@ -44,15 +56,27 @@ const Home = () => {
           </div>
 
           <div className="options-card">
-            <div className="option-show-cards">see cards</div>
-            <div className="option-filter">filter</div>
-            <div className="option-add-card">add card</div>
-            <div className="option-shuffle">shuffle</div>
+            <div className="option-show-cards" onClick={() => loadShowCards()}>
+              see cards
+            </div>
+            <div className="option-filter" onClick={() => loadFilter()}>
+              filter
+            </div>
+            <div className="option-add-card" onClick={() => loadAddCard()}>
+              add card
+            </div>
+            <div className="option-shuffle" onClick={() => loadShuffle()}>
+              shuffle
+            </div>
           </div>
 
           <div className="options-user">
-            <div className="option-settings">settings</div>
-            <div className="option-log-out">log out</div>
+            <div className="option-settings" onClick={() => loadSettings()}>
+              settings
+            </div>
+            <div className="option-log-out" onClick={() => logout()}>
+              log out
+            </div>
           </div>
 
           <div className="logo-app">---------cozy---------</div>
@@ -66,27 +90,6 @@ const Home = () => {
               <p>{user.name === '' ? 'by Thomas' : 'by Thomas'}</p>
             </div>
           ))}
-          {/* <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div>
-          <div className="card-date">[]</div> */}
         </div>
       </div>
     </div>

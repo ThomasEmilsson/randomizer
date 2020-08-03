@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import './app.scss'
 import '../themes.scss'
 import ThemeUpdater from '../themeHandling/themeUpdater'
+import Settings from '../home/settings'
 import Welcome from '../welcome/welcome'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import stickyState from '../helpers/stickyHook'
@@ -31,6 +32,7 @@ const App = () => {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/theme" component={ThemeUpdater} />
+          <Route exact path="/settings" component={Settings} />
           <Route exact path="/" component={Welcome} />
         </Router>
       </ThemeContext.Provider>
