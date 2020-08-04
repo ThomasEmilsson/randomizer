@@ -9,7 +9,6 @@ const getCurrentUser = (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-  // console.log(req.params.id)
   try {
     const user = await User.findByIdAndDelete(req.params.id)
 
@@ -174,6 +173,19 @@ const cancelRequest = async (req, res) => {
   }
 }
 
+const updateTheme = async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.user._id, {
+      settings: { theme: req.body.theme },
+    })
+
+    res.status(200).end()
+  } catch (err) {
+    console.error(err)
+    res.status(400).end()
+  }
+}
+
 const controller = {
   getCurrentUser: getCurrentUser,
   deleteUser: deleteUser,
@@ -181,6 +193,7 @@ const controller = {
   acceptRequest: acceptRequest,
   rejectRequest: rejectRequest,
   cancelRequest: cancelRequest,
+  updateTheme: updateTheme,
 }
 
 export default controller
