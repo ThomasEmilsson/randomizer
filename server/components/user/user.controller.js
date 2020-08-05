@@ -186,6 +186,17 @@ const updateTheme = async (req, res) => {
   }
 }
 
+const updateName = async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.user._id, {
+      name: req.body.name,
+    })
+    res.status(200).end()
+  } catch (err) {
+    console.error(err)
+    res.status(400).end()
+  }
+}
 const controller = {
   getCurrentUser: getCurrentUser,
   deleteUser: deleteUser,
@@ -194,6 +205,7 @@ const controller = {
   rejectRequest: rejectRequest,
   cancelRequest: cancelRequest,
   updateTheme: updateTheme,
+  updateName: updateName,
 }
 
 export default controller

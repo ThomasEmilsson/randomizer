@@ -11,5 +11,6 @@ router.route('/accept').post(userController.acceptRequest)
 router.route('/reject').post(userController.rejectRequest)
 router.route('/cancel').post(userController.cancelRequest)
 router.route('/updateTheme').put(userController.updateTheme)
+router.route('/updateName').put(userController.updateName)
 
 export default router
