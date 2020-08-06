@@ -15,7 +15,10 @@ import Home from '../home/home'
 
 const App = () => {
   const themeHook = stickyState('theme-dark', 'theme')
-  const userHook = stickyState({ name: '', email: '', token: '' }, 'user')
+  const userHook = stickyState(
+    { name: '', email: '', token: '', cookie: '' },
+    'user'
+  )
 
   useEffect(() => {
     localStorage.clear()

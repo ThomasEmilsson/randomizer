@@ -31,9 +31,9 @@ const SignIn = () => {
     } else if (data.password === '') {
       setError('password missing')
     } else {
-      let res = await signIn(data)
-      if (res.token) {
-        setUser({ email: data.email, token: res.token })
+      let response = await signIn(data)
+      if (response.token) {
+        setUser({ email: data.email, token: response.token })
         history.push('/home')
       } else {
         setError('Incorrect email or password')

@@ -53,7 +53,7 @@ const signIn = async (req, res) => {
 
     const token = generateToken(user)
     req.session.user = user
-    return res.status(201).send({ token })
+    return res.status(200).send({ token })
   } catch (err) {
     console.error(err)
     res.status(500).end()
@@ -62,7 +62,8 @@ const signIn = async (req, res) => {
 
 const signOut = (req, res) => {
   try {
-    if (req.session && req.session.user) {
+    // if (req.session && req.session.user) {
+    if (req.session) {
       req.session.cookie.maxAge = 0
       req.session.user = null
       req.session.destroy()

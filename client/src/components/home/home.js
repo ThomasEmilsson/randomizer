@@ -3,12 +3,13 @@ import Settings from '../home/settings'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import './home.scss'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import { signOut } from '../../api/authentication'
 
 const Home = () => {
   let history = useHistory()
   const [theme] = useContext(ThemeContext)
-  const [user] = useContext(UserContext)
+  const [user, setUser] = useContext(UserContext)
 
   const datesList = [
     {
@@ -36,7 +37,13 @@ const Home = () => {
   const loadAddCard = () => {}
   const loadFilter = () => {}
   const loadShowCards = () => {}
-  const logout = () => {}
+
+  const logout = async () => {
+    let response = await signOut()
+    console.log(response)
+    setUser({ name: '', email: '', token: '' }, 'user')
+    history.push('/')
+  }
 
   const letterExtractor = () => {
     if (user.name === '') {
@@ -85,9 +92,9 @@ const Home = () => {
         <div className={`title ${theme}`}>date cards</div>
         <div className="cards">
           {datesList.map((idea) => (
-            <div className={`card-date ${theme}`}>
+            <div key={idea.name} className={`card-date ${theme}`}>
               <p>{idea.name}</p>
-              <p>{user.name === '' ? 'by Thomas' : 'by Thomas'}</p>
+              <p>{user.name === '' ? ' blank ' : 'by ' + user.email}</p>
             </div>
           ))}
         </div>
