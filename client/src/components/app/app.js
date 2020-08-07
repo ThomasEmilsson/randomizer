@@ -21,7 +21,7 @@ const App = () => {
   )
 
   useEffect(() => {
-    localStorage.clear()
+    // localStorage.clear()
     updateDocument.updateClasses('body', themeHook[0])
     updateDocument.updateClasses('button', themeHook[0])
     updateDocument.updateClasses('.panel', themeHook[0])
