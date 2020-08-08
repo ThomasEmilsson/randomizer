@@ -24,6 +24,7 @@ const signUp = async (req, res) => {
     }
     const user = await User.create(req.body)
     const token = generateToken(user)
+    req.session.user = user
     return res.status(201).send({ token })
   } catch (err) {
     res.status(500).end()
