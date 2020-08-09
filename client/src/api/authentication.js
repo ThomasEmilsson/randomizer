@@ -29,13 +29,13 @@ const signIn = async ({ email, password }) => {
 
 const signOut = async () => {
   try {
-    const config = {
-      headers: { 'Access-Control-Allow-Origin': '*' },
-    }
+    // const config = {
+    //   headers: { 'Access-Control-Allow-Origin': '*' },
+    // }
     const response = await axios.post(
-      'http://localhost:3500/signOut',
-      null,
-      config
+      'http://localhost:3500/signOut'
+      // null,
+      // config
     )
     return response
   } catch (err) {
