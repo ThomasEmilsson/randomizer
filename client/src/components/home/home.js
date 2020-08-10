@@ -5,6 +5,7 @@ import UserContext from '../helpers/userContext'
 import './home.scss'
 import { useHistory } from 'react-router-dom'
 import { signOut } from '../../api/authentication'
+import { getDateIdeas } from '../../api/requests'
 
 const Home = () => {
   let history = useHistory()
@@ -36,7 +37,12 @@ const Home = () => {
   const loadShuffle = () => {}
   const loadAddCard = () => {}
   const loadFilter = () => {}
-  const loadShowCards = () => {}
+
+  const loadShowCards = async () => {
+    console.log(user.token)
+    let response = await getDateIdeas(user.token)
+    console.log(response)
+  }
 
   const logout = async () => {
     let response = await signOut()

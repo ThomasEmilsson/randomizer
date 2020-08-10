@@ -24,7 +24,7 @@ const updateName = async ({ name, token }) => {
     name: name,
   }
   const config = {
-    headers: { 'Bearer ': token },
+    headers: { Authorization: 'Bearer ' + token },
   }
   try {
     const response = await axios.put(
@@ -38,7 +38,7 @@ const updateName = async ({ name, token }) => {
   }
 }
 
-const createDate = async ({
+const createDateIdea = async ({
   name,
   location,
   description,
@@ -71,7 +71,7 @@ const createDate = async ({
   }
 }
 
-const deleteDate = async ({ dateIdeaId, token }) => {
+const deleteDateIdea = async ({ dateIdeaId, token }) => {
   const config = {
     headers: { 'Bearer ': token },
   }
@@ -122,4 +122,28 @@ const updateDateIdea = async ({
   }
 }
 
-export default { updateTheme, updateName }
+const getDateIdeas = async (token) => {
+  try {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+
+    const response = await axios.get(
+      `http://localhost:3500/api/dateIdea`,
+      config
+    )
+
+    return response.data
+  } catch (err) {
+    return err.response
+  }
+}
+
+export {
+  updateTheme,
+  updateName,
+  createDateIdea,
+  updateDateIdea,
+  deleteDateIdea,
+  getDateIdeas,
+}
