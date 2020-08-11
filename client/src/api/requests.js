@@ -5,7 +5,7 @@ const updateTheme = async ({ theme, token }) => {
     theme: theme,
   }
   const config = {
-    headers: { 'Bearer ': token },
+    headers: { Authorization: `Bearer ${token}` },
   }
   try {
     const response = await axios.put(
@@ -57,7 +57,7 @@ const createDateIdea = async ({
   }
 
   const config = {
-    headers: { 'Bearer ': token },
+    headers: { Authorization: `Bearer ${token}` },
   }
   try {
     const response = await axios.post(
@@ -73,7 +73,7 @@ const createDateIdea = async ({
 
 const deleteDateIdea = async ({ dateIdeaId, token }) => {
   const config = {
-    headers: { 'Bearer ': token },
+    headers: { Authorization: `Bearer ${token}` },
   }
 
   try {
@@ -108,7 +108,7 @@ const updateDateIdea = async ({
   }
 
   const config = {
-    headers: { 'Bearer ': token },
+    headers: { Authorization: `Bearer ${token}` },
   }
   try {
     const response = await axios.put(
