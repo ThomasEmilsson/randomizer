@@ -6,6 +6,7 @@ import './home.scss'
 import { useHistory } from 'react-router-dom'
 import { signOut } from '../../api/authentication'
 import { getDateIdeas } from '../../api/requests'
+import CardList from '../../components/cardList/cardList'
 
 const Home = () => {
   let history = useHistory()
@@ -20,6 +21,62 @@ const Home = () => {
       price: '$',
       topics: ['Moving Plans', 'Puppy Plans'],
       type: ['Cozy', 'Casual'],
+    },
+    {
+      name: 'Fancy Date Night Out',
+      location: 'Expensive Restaurant',
+      description: 'Dress up and go to expensive restaurant',
+      price: '$$$',
+      topics: ['Dream Vacation', 'Career Hopes'],
+      type: ['Fancy', 'Romantic'],
+    },
+    {
+      name: 'Fancy Date Night Out',
+      location: 'Expensive Restaurant',
+      description: 'Dress up and go to expensive restaurant',
+      price: '$$$',
+      topics: ['Dream Vacation', 'Career Hopes'],
+      type: ['Fancy', 'Romantic'],
+    },
+    {
+      name: 'Wine & Dine',
+      location: 'Home',
+      description: 'drink wine at home',
+      price: '$',
+      topics: ['Moving Plans', 'Puppy Plans'],
+      type: ['Cozy', 'Casual'],
+    },
+    {
+      name: 'Fancy Date Night Out',
+      location: 'Expensive Restaurant',
+      description: 'Dress up and go to expensive restaurant',
+      price: '$$$',
+      topics: ['Dream Vacation', 'Career Hopes'],
+      type: ['Fancy', 'Romantic'],
+    },
+    {
+      name: 'Fancy Date Night Out',
+      location: 'Expensive Restaurant',
+      description: 'Dress up and go to expensive restaurant',
+      price: '$$$',
+      topics: ['Dream Vacation', 'Career Hopes'],
+      type: ['Fancy', 'Romantic'],
+    },
+    {
+      name: 'Wine & Dine',
+      location: 'Home',
+      description: 'drink wine at home',
+      price: '$',
+      topics: ['Moving Plans', 'Puppy Plans'],
+      type: ['Cozy', 'Casual'],
+    },
+    {
+      name: 'Fancy Date Night Out',
+      location: 'Expensive Restaurant',
+      description: 'Dress up and go to expensive restaurant',
+      price: '$$$',
+      topics: ['Dream Vacation', 'Career Hopes'],
+      type: ['Fancy', 'Romantic'],
     },
     {
       name: 'Fancy Date Night Out',
@@ -59,7 +116,6 @@ const Home = () => {
     }
   }
 
-  const extractCards = () => {}
   return (
     <div className="home">
       <div className="grid-container">
@@ -95,15 +151,18 @@ const Home = () => {
           <div className="logo-app">---------cozy---------</div>
         </div>
 
-        <div className={`title ${theme}`}>date cards</div>
-        <div className="cards">
-          {datesList.map((idea) => (
-            <div key={idea.name} className={`card-date ${theme}`}>
-              <p>{idea.name}</p>
-              <p>{user.name === '' ? ' blank ' : 'by ' + user.email}</p>
-            </div>
-          ))}
+        <div className={`test`}>
+          <div className={`title ${theme}`}>date cards</div>
+          <div className="cards">
+            {datesList.map((idea) => (
+              <div key={idea.name} className={`card-date ${theme}`}>
+                <p>{idea.name}</p>
+                <p>{user.name === '' ? ' blank ' : 'by ' + user.email}</p>
+              </div>
+            ))}
+          </div>
         </div>
+        {/* <CardList dates={datesList} /> */}
       </div>
     </div>
   )

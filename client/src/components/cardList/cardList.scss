@@ -1,0 +1,14 @@
+.cardList {
+    grid-area: 2 / 2 / 3 / 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    grid-auto-rows: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    min-height: 100vh;
+    padding-bottom: 100px;
+}

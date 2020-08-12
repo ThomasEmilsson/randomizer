@@ -7,7 +7,7 @@ body {
 .home .grid-container {
   display: grid;
   grid-template-columns: 0.5fr 3fr;
-  grid-template-rows: minmax(150px, 200px) 2fr;
+  // grid-template-rows: minmax(150px, 200px) 2fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
@@ -48,7 +48,6 @@ body {
   cursor: pointer;
 }
 
-
 .home .option-log-out:hover {
   transform: scale(1.15);
   cursor: pointer;
@@ -79,8 +78,17 @@ body {
   place-items: center;
 }
 
+.home .test {
+  display: grid;
+
+}
+
 .home .title {
-  grid-area: 1 / 2 / 2 / 2;
+  // grid-area: 1 / 2 / 2 / 2;
+  // grid-row-start: 0;
+  // grid-row-end: 1;
+  // grid-column-start: 0;
+  // grid-column-end: 1;
   display: grid;
   align-items: center;
   padding-left: 5%;
@@ -92,7 +100,11 @@ body {
 }
 
 .home .cards {
-  grid-area: 2 / 2 / 3 / 3;
+  // grid-area: 2 / 2 / 3 / 3;
+  // grid-row-start: 1;
+  // grid-row-end: 2;
+  // grid-column-start: 0;
+  // grid-column-end: 3;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
@@ -102,8 +114,8 @@ body {
 
   grid-column-gap: 50px;
   grid-row-gap: 50px;
-  min-height: 100vh;
-  padding-bottom: 100px;
+  // min-height: 100vh;
+  // padding-bottom: 100px;
 }
 
 .home .card-date {
