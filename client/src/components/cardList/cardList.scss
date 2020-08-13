@@ -1,5 +1,23 @@
+@import '../themes.scss';
+
 .cardList {
-    grid-area: 2 / 2 / 3 / 3;
+    display: grid
+}
+
+.cardList .title {
+    display: grid;
+    align-items: center;
+    padding-left: 5%;
+    font-size: 28px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+
+    @include theme() {
+        color: theme(nav);
+    }
+}
+
+.cardList .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
@@ -9,6 +27,40 @@
 
     grid-column-gap: 50px;
     grid-row-gap: 50px;
-    min-height: 100vh;
-    padding-bottom: 100px;
+
+}
+
+.cardList .card-date {
+    height: 300px;
+    border-radius: 31px;
+    background: #24272c;
+    box-shadow: 5px 5px 15px #111215, -5px -5px 15px #373c43;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardList .card-date:active {
+    border-radius: 31px;
+    background: #24272c;
+    box-shadow: inset 5px 5px 15px #111215, inset -5px -5px 15px #373c43;
+}
+
+.cardList .card-date p:first-child {
+    font-family: 'Futura PT, Light';
+    font-size: 28px;
+    text-transform: lowercase;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 0px;
+}
+
+.cardList .card-date p:last-child {
+    font-family: 'Futura PT, Light';
+    font-size: 24px;
+    text-transform: lowercase;
+    text-align: center;
+    color: #a1a2a9;
 }

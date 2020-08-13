@@ -151,18 +151,8 @@ const Home = () => {
           <div className="logo-app">---------cozy---------</div>
         </div>
 
-        <div className={`test`}>
-          <div className={`title ${theme}`}>date cards</div>
-          <div className="cards">
-            {datesList.map((idea) => (
-              <div key={idea.name} className={`card-date ${theme}`}>
-                <p>{idea.name}</p>
-                <p>{user.name === '' ? ' blank ' : 'by ' + user.email}</p>
-              </div>
-            ))}
-          </div>
-        </div>
         {/* <CardList dates={datesList} /> */}
+        <Settings />
       </div>
     </div>
   )

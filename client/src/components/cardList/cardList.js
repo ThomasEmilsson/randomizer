@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
+import './cardList.scss'
 
 const CardList = (props) => {
   const datesList = props.dates
   const [theme] = useContext(ThemeContext)
-
   const [user] = useContext(UserContext)
+
   return (
-    <div>
+    <div className={`cardList`}>
       <div className={`title ${theme}`}>date cards</div>
       <div className="cards">
         {datesList.map((idea) => (
@@ -18,7 +19,6 @@ const CardList = (props) => {
           </div>
         ))}
       </div>{' '}
-      */
     </div>
   )
 }

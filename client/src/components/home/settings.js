@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import './settings.scss'
+
+import ThemeContext from '../helpers/themeContext'
+import UserContext from '../helpers/userContext'
 
 const Settings = () => {
+  const [theme] = useContext(ThemeContext)
+  const [user] = useContext(UserContext)
+
   return (
     <div className="settings">
-      <div className="grid-container">
-        <h1> settings </h1>
-      </div>
+      <div className={`title ${theme}`}> settings </div>
+
+      <div className="contents"></div>
     </div>
   )
 }
