@@ -26,5 +26,18 @@
     border: 5px solid red;
     height: 100%;
     margin-bottom: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 5%;
+    text-align: left;
+    padding-top: 5%;
+}
 
+.settings .column-one {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.settings .column-two {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
 }
