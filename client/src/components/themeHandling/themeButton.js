@@ -5,9 +5,10 @@ const ThemeButton = (props) => {
   const { updateTheme } = props
 
   return (
-    <div>
-      <button onClick={() => updateTheme(props.value)}>{props.text}</button>
-    </div>
+    <button
+      className={props.className}
+      onClick={() => updateTheme(props.value)}
+    />
   )
 }
 

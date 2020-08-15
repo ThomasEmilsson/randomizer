@@ -23,13 +23,18 @@
 
 .settings .contents {
     display: grid;
-    border: 5px solid red;
+    box-shadow: 5px 5px 9px #00000029;
+    border-radius: 31px;
     height: 100%;
     margin-bottom: 25px;
     grid-template-columns: repeat(2, 1fr);
     padding-left: 5%;
     text-align: left;
     padding-top: 5%;
+
+    @include theme() {
+        background: theme(background-focus) 0% 0% no-repeat padding-box;
+    }
 }
 
 .settings .column-one {
@@ -40,4 +45,58 @@
 .settings .column-two {
     display: grid;
     grid-template-rows: 1fr 2fr;
+}
+
+.settings label {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    font-size: 24px;
+}
+
+.settings .underline {
+    border-top: 1px solid white;
+    width: 40%;
+    margin-top: 2px;
+}
+
+.settings .column-two .change-theme button {
+    width: 40px;
+    height: 40px;
+    padding-right: 5px;
+    border-radius: 4px;
+    margin-right: 25px;
+}
+
+
+.settings .column-two .change-theme .buttons {
+    width: 30%;
+    height: 30%;
+    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings .light-theme {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+}
+
+.settings .dark-theme {
+    background: #2A2D32 0% 0% no-repeat padding-box;
+}
+
+.settings .red-theme {
+    background: #602A2E 0% 0% no-repeat padding-box;
+}
+
+.settings .brown-theme {
+    background: #93796D 0% 0% no-repeat padding-box;
+}
+
+.settings .teal-theme {
+    background: #13695F 0% 0% no-repeat padding-box;
+}
+
+.settings .blue-theme {
+    background: #24556F 0% 0% no-repeat padding-box;
 }
