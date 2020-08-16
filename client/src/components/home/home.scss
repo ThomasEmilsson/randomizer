@@ -19,6 +19,7 @@ body {
   top: 0;
   min-height: 100vh;
   max-height: 100vh;
+  margin-left: 50px;
 
   @include theme() {
     background-color: theme(nav);

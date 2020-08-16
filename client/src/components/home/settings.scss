@@ -77,6 +77,21 @@
     flex-wrap: wrap;
 }
 
+.settings .column-one input {
+    height: 30px;
+    border-radius: 4px;
+    padding-left: 5px;
+
+    @include theme() {
+        background: theme(background-focus);
+        box-shadow: inset 16px 16px 32px theme(shadow),
+            inset -16px -16px 32px theme(shadow-light);
+
+        color: theme(text-main);
+    }
+}
+
+
 .settings .light-theme {
     background: #FFFFFF 0% 0% no-repeat padding-box;
 }

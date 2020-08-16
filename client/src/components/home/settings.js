@@ -9,6 +9,8 @@ import updateDocument from '../themeHandling/updateDocument.js'
 const Settings = () => {
   const [theme, setTheme] = useContext(ThemeContext)
   const [user] = useContext(UserContext)
+  console.log(user.name)
+  console.log(user.email)
 
   useEffect(() => {
     updateDocument.updateClasses('body', theme)
@@ -28,6 +30,7 @@ const Settings = () => {
               <input
                 // value={data.name}
                 // onChange={handleNameChange}
+                className={`${theme}`}
                 type="text"
                 name="name"
                 placeholder="name"
@@ -44,6 +47,7 @@ const Settings = () => {
               <input
                 // value={data.name}
                 // onChange={handleNameChange}
+                className={`${theme}`}
                 type="text"
                 name="password"
                 placeholder="password"
