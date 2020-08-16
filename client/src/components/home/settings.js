@@ -9,8 +9,6 @@ import updateDocument from '../themeHandling/updateDocument.js'
 const Settings = () => {
   const [theme, setTheme] = useContext(ThemeContext)
   const [user] = useContext(UserContext)
-  console.log(user.name)
-  console.log(user.email)
 
   useEffect(() => {
     updateDocument.updateClasses('body', theme)

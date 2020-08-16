@@ -54,7 +54,7 @@ const signIn = async (req, res) => {
 
     const token = generateToken(user)
     req.session.user = user
-    return res.status(200).send({ token })
+    return res.status(200).send({ name: user.name, token: token })
   } catch (err) {
     console.error(err)
     res.status(500).end()

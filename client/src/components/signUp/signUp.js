@@ -35,7 +35,7 @@ const SignUp = () => {
     } else {
       let res = await signUp(data)
       if (res.token) {
-        setUser({ email: data.email, token: res.token })
+        setUser({ name: data.name, email: data.email, token: res.token })
         history.push('/home')
       } else {
         setError('something went wrong, try again')

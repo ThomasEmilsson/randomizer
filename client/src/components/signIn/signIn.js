@@ -33,7 +33,11 @@ const SignIn = () => {
     } else {
       let response = await signIn(data)
       if (response.token) {
-        setUser({ email: data.email, token: response.token })
+        setUser({
+          name: response.name,
+          email: data.email,
+          token: response.token,
+        })
         history.push('/home')
       } else {
         setError('Incorrect email or password')
