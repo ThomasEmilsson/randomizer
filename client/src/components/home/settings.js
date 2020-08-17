@@ -14,7 +14,12 @@ const Settings = () => {
     updateDocument.updateClasses('body', theme)
     updateDocument.updateClasses('button', theme)
     updateDocument.updateClasses('.panel', theme)
+    updateDocument.updateClasses('.form-header', theme)
   })
+
+  const changeName = (event) => {
+    console.log(event.target.value)
+  }
 
   return (
     <div className="settings">
@@ -22,17 +27,31 @@ const Settings = () => {
       <div className="contents">
         <div className="column-one">
           <div className="change-name">
-            <form className="form-change-name" onSubmit={(e) => console.log(e)}>
-              <label htmlFor="account-name">change account</label>
-              <p className="underline" />
-              <input
-                // value={data.name}
-                // onChange={handleNameChange}
-                className={`${theme}`}
-                type="text"
-                name="name"
-                placeholder="name"
-              />
+            <div className="form-header">change account</div>
+            <p className="underline" />
+            <form className="form-change-name" onSubmit={(e) => changeName(e)}>
+              <div className="change-name-section">
+                <div className="change-name-input">
+                  current name:
+                  <input
+                    readOnly
+                    value={user.name}
+                    className={`${theme}`}
+                    type="text"
+                    name="name"
+                    placeholder="username"
+                  />
+                </div>
+                <div className="change-name-input">
+                  new name:
+                  <input
+                    className={`${theme}`}
+                    type="text"
+                    name="name"
+                    placeholder="name"
+                  />
+                </div>
+              </div>
             </form>
           </div>
           <div className="change-password">
@@ -40,20 +59,31 @@ const Settings = () => {
               className="form-change-password"
               onSubmit={(e) => console.log(e)}
             >
-              <label htmlFor="account-password">change password</label>
+              <div className="form-header">change password</div>
+
               <p className="underline" />
-              <input
-                // value={data.name}
-                // onChange={handleNameChange}
-                className={`${theme}`}
-                type="text"
-                name="password"
-                placeholder="password"
-              />
+              <div className="change-password-input">
+                new password:
+                <input
+                  className={`${theme}`}
+                  type="text"
+                  name="name"
+                  placeholder="password"
+                />
+              </div>
+              <div className="change-password-input">
+                re-enter password:
+                <input
+                  className={`${theme}`}
+                  type="text"
+                  name="name"
+                  placeholder="password"
+                />
+              </div>
             </form>
           </div>
           <div className="delete-account">
-            <label htmlFor="delete-account">delete account</label>
+            <div className="form-header">delete account</div>
             <p className="underline" />
             <button
               // onClick={handleAccountDelete}
@@ -66,7 +96,7 @@ const Settings = () => {
         </div>
         <div className="column-two">
           <div className="manage-partners">
-            <label htmlFor="account-name">manage partners</label>
+            <div className="form-header">manage partners</div>
             <p className="underline" />
             <button
               // onClick={handleUpdatePartners}
@@ -77,7 +107,7 @@ const Settings = () => {
             </button>
           </div>
           <div className="change-theme">
-            <label htmlFor="account-name">change theme</label>
+            <div className="form-header">change theme</div>
             <p className="underline" />
             <div className="buttons">
               <ThemeButton

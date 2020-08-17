@@ -47,15 +47,26 @@
     grid-template-rows: 1fr 2fr;
 }
 
-.settings label {
+.settings .form-header {
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
     font-size: 24px;
+    width: 40%;
 }
+
+// .settings .form-header:hover {
+//     transform: scale(1.01);
+//     transform-origin: left;
+//     cursor: pointer;
+
+//     @include theme() {
+//         color: theme(nav);
+//     }
+// }
 
 .settings .underline {
     border-top: 1px solid white;
-    width: 40%;
+    width: 70%;
     margin-top: 2px;
 }
 
@@ -81,6 +92,7 @@
     height: 30px;
     border-radius: 4px;
     padding-left: 5px;
+    font-size: 16px;
 
     @include theme() {
         background: theme(background-focus);
@@ -89,6 +101,20 @@
 
         color: theme(text-main);
     }
+}
+
+.settings .column-one .change-name-input {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 70%;
+    padding-bottom: 20px;
+}
+
+.settings .column-one .change-password-input {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 70%;
+    padding-bottom: 20px;
 }
 
 
