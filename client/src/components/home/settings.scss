@@ -103,20 +103,22 @@
     }
 }
 
-.settings .column-one .change-name-input {
+.settings .column-one .inputs {
     display: grid;
     grid-template-columns: 1fr 2fr;
     width: 70%;
     padding-bottom: 20px;
 }
 
-.settings .column-one .change-password-input {
+.settings .form-errors {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    width: 70%;
-    padding-bottom: 20px;
+    align-items: center;
+    color: red;
 }
 
+.settings .button-submit {
+    height: 40px;
+}
 
 .settings .light-theme {
     background: #FFFFFF 0% 0% no-repeat padding-box;
