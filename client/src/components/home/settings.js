@@ -5,6 +5,7 @@ import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import ThemeButton from '../themeHandling/themeButton'
 import updateDocument from '../themeHandling/updateDocument.js'
+import ThemeUpdater from '../themeHandling/themeUpdater'
 
 const Settings = () => {
   const [theme, setTheme] = useContext(ThemeContext)
@@ -29,7 +30,6 @@ const Settings = () => {
   })
 
   const changeName = async (event) => {
-
     event.preventDefault()
     if (data.name === '') {
       setErrorOne('name missing')
@@ -45,7 +45,6 @@ const Settings = () => {
           token: user.token,
         })
       }
-
     }
   }
 
@@ -53,8 +52,6 @@ const Settings = () => {
     event.preventDefault()
     console.log(data.password + ' --- ' + data.passwordTwo)
   }
-
-
 
   return (
     <div className="settings">
@@ -159,38 +156,7 @@ const Settings = () => {
           <div className="change-theme">
             <div className="form-header">change theme</div>
             <p className="underline" />
-            <div className="buttons">
-              <ThemeButton
-                className="dark-theme"
-                value="theme-dark"
-                updateTheme={setTheme}
-              />
-              <ThemeButton
-                className="light-theme"
-                value="theme-light"
-                updateTheme={setTheme}
-              />
-              <ThemeButton
-                className="red-theme"
-                value="theme-red"
-                updateTheme={setTheme}
-              />
-              <ThemeButton
-                className="brown-theme"
-                value="theme-brown"
-                updateTheme={setTheme}
-              />
-              <ThemeButton
-                className="teal-theme"
-                value="theme-teal"
-                updateTheme={setTheme}
-              />
-              <ThemeButton
-                className="blue-theme"
-                value="theme-blue"
-                updateTheme={setTheme}
-              />
-            </div>
+            <ThemeUpdater />
           </div>
         </div>
       </div>

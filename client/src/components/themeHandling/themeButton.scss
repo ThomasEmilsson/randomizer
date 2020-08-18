@@ -3,8 +3,13 @@
 button {
   border-radius: 4px;
 
+
   @include theme() {
     background-color: theme(background-main);
     color: theme(text-main);
   }
+}
+
+.selected {
+  border-right: 3px solid red;
 }

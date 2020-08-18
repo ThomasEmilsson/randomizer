@@ -18,7 +18,7 @@ const updateTheme = async ({
       data,
       config
     )
-    return response.data
+    return response
   } catch (err) {
     return err.response
   }
@@ -42,7 +42,7 @@ const updateName = async ({
       data,
       config
     )
-    return response.data
+    return response
   } catch (err) {
     return err.response
   }
