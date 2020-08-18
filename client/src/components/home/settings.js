@@ -8,7 +8,7 @@ import updateDocument from '../themeHandling/updateDocument.js'
 
 const Settings = () => {
   const [theme, setTheme] = useContext(ThemeContext)
-  const [user] = useContext(UserContext)
+  const [user, setUser] = useContext(UserContext)
 
   const [data, setData] = useState({ name: '', password: '', passwordTwo: '' })
   const [errorOne, setErrorOne] = useState('')
@@ -20,6 +20,7 @@ const Settings = () => {
       [name]: value,
     }))
   }
+
   useEffect(() => {
     updateDocument.updateClasses('body', theme)
     updateDocument.updateClasses('button', theme)
@@ -28,12 +29,23 @@ const Settings = () => {
   })
 
   const changeName = async (event) => {
+
     event.preventDefault()
     if (data.name === '') {
       setErrorOne('name missing')
     } else {
       setErrorOne('')
-      updateName({ name: data.name, token: user.token })
+
+      let response = await updateName({ name: data.name, token: user.token })
+
+      if (response.status === 200) {
+        setUser({
+          name: data.name,
+          email: user.email,
+          token: user.token,
+        })
+      }
+
     }
   }
 
@@ -41,6 +53,9 @@ const Settings = () => {
     event.preventDefault()
     console.log(data.password + ' --- ' + data.passwordTwo)
   }
+
+
+
   return (
     <div className="settings">
       <div className={`title ${theme}`}> settings </div>

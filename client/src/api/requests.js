@@ -1,11 +1,16 @@
 import axios from 'axios'
 
-const updateTheme = async ({ theme, token }) => {
+const updateTheme = async ({
+  theme,
+  token
+}) => {
   const data = {
     theme: theme,
   }
   const config = {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
   }
   try {
     const response = await axios.put(
@@ -19,12 +24,17 @@ const updateTheme = async ({ theme, token }) => {
   }
 }
 
-const updateName = async ({ name, token }) => {
+const updateName = async ({
+  name,
+  token
+}) => {
   const data = {
     name: name,
   }
   const config = {
-    headers: { Authorization: 'Bearer ' + token },
+    headers: {
+      Authorization: 'Bearer ' + token
+    },
   }
   try {
     const response = await axios.put(
@@ -57,7 +67,9 @@ const createDateIdea = async ({
   }
 
   const config = {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
   }
   try {
     const response = await axios.post(
@@ -71,9 +83,14 @@ const createDateIdea = async ({
   }
 }
 
-const deleteDateIdea = async ({ dateIdeaId, token }) => {
+const deleteDateIdea = async ({
+  dateIdeaId,
+  token
+}) => {
   const config = {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
   }
 
   try {
@@ -108,7 +125,9 @@ const updateDateIdea = async ({
   }
 
   const config = {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
   }
   try {
     const response = await axios.put(
@@ -125,7 +144,9 @@ const updateDateIdea = async ({
 const getDateIdeas = async (token) => {
   try {
     const config = {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
     }
 
     const response = await axios.get(
