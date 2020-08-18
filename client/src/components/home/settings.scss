@@ -51,7 +51,7 @@
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
     font-size: 24px;
-    width: 40%;
+    width: 50%;
 }
 
 // .settings .form-header:hover {
@@ -66,7 +66,7 @@
 
 .settings .underline {
     border-top: 1px solid white;
-    width: 70%;
+    width: 80%;
     margin-top: 2px;
 }
 
@@ -80,12 +80,11 @@
 
 
 .settings .column-two .change-theme .buttons {
-    width: 30%;
-    height: 30%;
-    display: inline-block;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    width: 50%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 20px;
 }
 
 .settings .column-one input {
@@ -106,7 +105,7 @@
 .settings .column-one .inputs {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    width: 70%;
+    width: 80%;
     padding-bottom: 20px;
 }
 
