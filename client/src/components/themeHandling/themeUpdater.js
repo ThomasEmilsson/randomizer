@@ -1,9 +1,24 @@
-import React, { useContext } from 'react'
+import React, { useRef, useContext, useEffect } from 'react'
 import ThemeButton from './themeButton.js'
 import ThemeContext from '../helpers/themeContext'
+import { updateTheme } from '../../api/requests'
+import UserContext from '../helpers/userContext.js'
 
 const ThemeUpdater = (props) => {
   const [theme, setTheme] = useContext(ThemeContext)
+  const [user] = useContext(UserContext)
+  const isFirst = useRef(false)
+
+  useEffect(() => {
+    if (setTheme && isFirst.current) {
+      async function asyncUpdateTheme() {
+        await updateTheme({ theme: theme, token: user.token })
+      }
+
+      asyncUpdateTheme()
+    }
+    isFirst.current = true
+  })
 
   return (
     <div className="buttons">

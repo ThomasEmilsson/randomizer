@@ -1,15 +1,12 @@
 import axios from 'axios'
 
-const updateTheme = async ({
-  theme,
-  token
-}) => {
+const updateTheme = async ({ theme, token }) => {
   const data = {
     theme: theme,
   }
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: 'Bearer ' + token,
     },
   }
   try {
@@ -24,16 +21,13 @@ const updateTheme = async ({
   }
 }
 
-const updateName = async ({
-  name,
-  token
-}) => {
+const updateName = async ({ name, token }) => {
   const data = {
     name: name,
   }
   const config = {
     headers: {
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + token,
     },
   }
   try {
@@ -68,7 +62,7 @@ const createDateIdea = async ({
 
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
   }
   try {
@@ -83,13 +77,10 @@ const createDateIdea = async ({
   }
 }
 
-const deleteDateIdea = async ({
-  dateIdeaId,
-  token
-}) => {
+const deleteDateIdea = async ({ dateIdeaId, token }) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
   }
 
@@ -126,7 +117,7 @@ const updateDateIdea = async ({
 
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
   }
   try {
@@ -145,7 +136,7 @@ const getDateIdeas = async (token) => {
   try {
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     }
 
