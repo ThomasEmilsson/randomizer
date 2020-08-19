@@ -3,12 +3,11 @@ import './settings.scss'
 import { updateName } from '../../api/requests'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
-import ThemeButton from '../themeHandling/themeButton'
 import updateDocument from '../themeHandling/updateDocument.js'
 import ThemeUpdater from '../themeHandling/themeUpdater'
 
 const Settings = () => {
-  const [theme, setTheme] = useContext(ThemeContext)
+  const [theme] = useContext(ThemeContext)
   const [user, setUser] = useContext(UserContext)
 
   const [data, setData] = useState({ name: '', password: '', passwordTwo: '' })

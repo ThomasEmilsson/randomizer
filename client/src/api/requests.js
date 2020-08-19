@@ -1,15 +1,21 @@
 import axios from 'axios'
 
-const updateTheme = async ({ theme, token }) => {
-  const data = {
-    theme: theme,
+// SetTheme Hook when logging out calls this method
+//  - safeguard to include name to prevent unnecessary request
+const updateTheme = async ({ name, theme, token }) => {
+  if (name === '') {
+    return ''
   }
-  const config = {
-    headers: {
-      Authorization: 'Bearer ' + token,
-    },
-  }
+
   try {
+    const data = {
+      theme: theme,
+    }
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    }
     const response = await axios.put(
       'http://localhost:3500/api/user/updateTheme',
       data,
@@ -151,6 +157,20 @@ const getDateIdeas = async (token) => {
   }
 }
 
+const getCurrentUser = async (token) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    const response = await axios.get(`http://localhost:3500/api/user`, config)
+    return response.data
+  } catch (err) {
+    return err.response
+  }
+}
+
 export {
   updateTheme,
   updateName,
@@ -158,4 +178,5 @@ export {
   updateDateIdea,
   deleteDateIdea,
   getDateIdeas,
+  getCurrentUser,
 }

@@ -1,92 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import Settings from '../home/settings'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import './home.scss'
 import { useHistory } from 'react-router-dom'
 import { signOut } from '../../api/authentication'
-import { getDateIdeas } from '../../api/requests'
-import CardList from '../../components/cardList/cardList'
+import { getDateIdeas, getCurrentUser } from '../../api/requests'
+// import CardList from '../../components/cardList/cardList'
 
 const Home = () => {
   let history = useHistory()
-  const [theme] = useContext(ThemeContext)
+  const [theme, setTheme] = useContext(ThemeContext)
   const [user, setUser] = useContext(UserContext)
+  const isFirstHome = useRef(true)
 
-  const datesList = [
-    {
-      name: 'Wine & Dine',
-      location: 'Home',
-      description: 'drink wine at home',
-      price: '$',
-      topics: ['Moving Plans', 'Puppy Plans'],
-      type: ['Cozy', 'Casual'],
-    },
-    {
-      name: 'Fancy Date Night Out',
-      location: 'Expensive Restaurant',
-      description: 'Dress up and go to expensive restaurant',
-      price: '$$$',
-      topics: ['Dream Vacation', 'Career Hopes'],
-      type: ['Fancy', 'Romantic'],
-    },
-    {
-      name: 'Fancy Date Night Out',
-      location: 'Expensive Restaurant',
-      description: 'Dress up and go to expensive restaurant',
-      price: '$$$',
-      topics: ['Dream Vacation', 'Career Hopes'],
-      type: ['Fancy', 'Romantic'],
-    },
-    {
-      name: 'Wine & Dine',
-      location: 'Home',
-      description: 'drink wine at home',
-      price: '$',
-      topics: ['Moving Plans', 'Puppy Plans'],
-      type: ['Cozy', 'Casual'],
-    },
-    {
-      name: 'Fancy Date Night Out',
-      location: 'Expensive Restaurant',
-      description: 'Dress up and go to expensive restaurant',
-      price: '$$$',
-      topics: ['Dream Vacation', 'Career Hopes'],
-      type: ['Fancy', 'Romantic'],
-    },
-    {
-      name: 'Fancy Date Night Out',
-      location: 'Expensive Restaurant',
-      description: 'Dress up and go to expensive restaurant',
-      price: '$$$',
-      topics: ['Dream Vacation', 'Career Hopes'],
-      type: ['Fancy', 'Romantic'],
-    },
-    {
-      name: 'Wine & Dine',
-      location: 'Home',
-      description: 'drink wine at home',
-      price: '$',
-      topics: ['Moving Plans', 'Puppy Plans'],
-      type: ['Cozy', 'Casual'],
-    },
-    {
-      name: 'Fancy Date Night Out',
-      location: 'Expensive Restaurant',
-      description: 'Dress up and go to expensive restaurant',
-      price: '$$$',
-      topics: ['Dream Vacation', 'Career Hopes'],
-      type: ['Fancy', 'Romantic'],
-    },
-    {
-      name: 'Fancy Date Night Out',
-      location: 'Expensive Restaurant',
-      description: 'Dress up and go to expensive restaurant',
-      price: '$$$',
-      topics: ['Dream Vacation', 'Career Hopes'],
-      type: ['Fancy', 'Romantic'],
-    },
-  ]
+  useEffect(() => {
+    if (isFirstHome.current) {
+      async function asyncGetCurrentUser() {
+        let response = await getCurrentUser(user.token)
+        setTheme(response.settings.theme)
+      }
+
+      asyncGetCurrentUser()
+      isFirstHome.current = false
+    }
+  })
 
   const loadSettings = () => {
     history.push('/settings')
@@ -102,18 +40,10 @@ const Home = () => {
   }
 
   const logout = async () => {
-    let response = await signOut()
-    console.log(response)
+    await signOut()
     setUser({ name: '', email: '', token: '' }, 'user')
+    setTheme('theme-dark')
     history.push('/')
-  }
-
-  const letterExtractor = () => {
-    if (user.name === '') {
-      return user.email.charAt(0)
-    } else {
-      return user.name.charAt(0)
-    }
   }
 
   return (

@@ -7,17 +7,15 @@ import UserContext from '../helpers/userContext.js'
 const ThemeUpdater = (props) => {
   const [theme, setTheme] = useContext(ThemeContext)
   const [user] = useContext(UserContext)
-  const isFirst = useRef(false)
-
+  const isFirst = useRef(true)
   useEffect(() => {
-    if (setTheme && isFirst.current) {
+    if (setTheme && !isFirst.current) {
       async function asyncUpdateTheme() {
-        await updateTheme({ theme: theme, token: user.token })
+        await updateTheme({ name: user.name, theme: theme, token: user.token })
       }
-
       asyncUpdateTheme()
     }
-    isFirst.current = true
+    isFirst.current = false
   })
 
   return (

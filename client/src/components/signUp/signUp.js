@@ -8,7 +8,7 @@ import { Link, useHistory } from 'react-router-dom'
 const SignUp = () => {
   let history = useHistory()
   const [theme] = useContext(ThemeContext)
-  const [user, setUser] = useContext(UserContext)
+  const [, setUser] = useContext(UserContext)
   const [data, setData] = useState({
     name: '',
     email: '',

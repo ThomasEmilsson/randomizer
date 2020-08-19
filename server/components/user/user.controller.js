@@ -4,7 +4,7 @@ import { keys } from '../../config/keys.js'
 import { log } from 'console'
 
 const getCurrentUser = (req, res) => {
-  if (req.user && req.session.user) res.status(200).send(req.user)
+  if (req.user) res.status(200).send(req.user)
   else res.status(400).end()
 }
 

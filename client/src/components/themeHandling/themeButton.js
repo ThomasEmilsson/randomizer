@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import './themeButton.scss'
 import ThemeContext from '../helpers/themeContext'
 
@@ -8,7 +8,9 @@ const ThemeButton = (props) => {
 
   return (
     <button
-      className={`${props.className} ${theme == props.value ? 'selected' : ''}`}
+      className={`${props.className} ${
+        theme === props.value ? 'selected' : ''
+      }`}
       onClick={(e) => {
         updateTheme(props.value)
       }}

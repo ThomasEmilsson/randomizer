@@ -4,11 +4,9 @@ import logo from '../../images/logo-test.png'
 import { Link } from 'react-router-dom'
 import ThemeContext from '../helpers/themeContext'
 import updateDocument from '../themeHandling/updateDocument.js'
-import UserContext from '../helpers/userContext'
 
 const Welcome = (props) => {
   const [theme] = useContext(ThemeContext)
-  const [user] = useContext(UserContext)
 
   useEffect(() => {
     updateDocument.updateClasses('body', theme)
