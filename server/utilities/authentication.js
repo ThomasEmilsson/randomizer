@@ -46,7 +46,7 @@ const signIn = async (req, res) => {
       return res.status(401).send(userMessage)
     }
 
-    const match = await user.comparePassword(user.password)
+    const match = await user.comparePassword(req.body.password)
 
     if (!match) {
       return res.status(401).send(userMessage)

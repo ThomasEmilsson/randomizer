@@ -28,17 +28,39 @@ const updateTheme = async ({ name, theme, token }) => {
 }
 
 const updateName = async ({ name, token }) => {
-  const data = {
-    name: name,
-  }
-  const config = {
-    headers: {
-      Authorization: 'Bearer ' + token,
-    },
-  }
   try {
+    const data = {
+      name: name,
+    }
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    }
+
     const response = await axios.put(
       'http://localhost:3500/api/user/updateName',
+      data,
+      config
+    )
+    return response
+  } catch (err) {
+    return err.response
+  }
+}
+
+const updatePassword = async ({ password, token }) => {
+  try {
+    const data = {
+      password: password,
+    }
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    }
+    const response = await axios.put(
+      'http://localhost:3500/api/user/updatePassword',
       data,
       config
     )
@@ -179,4 +201,5 @@ export {
   deleteDateIdea,
   getDateIdeas,
   getCurrentUser,
+  updatePassword,
 }

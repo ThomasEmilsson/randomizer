@@ -197,6 +197,22 @@ const updateName = async (req, res) => {
     res.status(400).end()
   }
 }
+
+const updatePassword = async (req, res) => {
+  try {
+    // const user = await User.findOne(req.user._id)
+    const user = await User.findOne(req.user._id).select('name email password')
+
+    user.password = req.body.password
+    await user.save()
+
+    res.status(200).end()
+  } catch (err) {
+    console.error(err)
+    res.status(400).end()
+  }
+}
+
 const controller = {
   getCurrentUser: getCurrentUser,
   deleteUser: deleteUser,
@@ -206,6 +222,7 @@ const controller = {
   cancelRequest: cancelRequest,
   updateTheme: updateTheme,
   updateName: updateName,
+  updatePassword: updatePassword,
 }
 
 export default controller

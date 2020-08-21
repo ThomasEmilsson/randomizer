@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
     theme: {
       type: String,
       required: true,
-      default: 'light',
+      default: 'theme-dark',
     },
   },
 })
@@ -92,8 +92,8 @@ userSchema.pre('save', function (next) {
   })
 })
 
-userSchema.methods.comparePassword = function (password) {
-  return password === this.password
+userSchema.methods.comparePassword = async function (password) {
+  return await bcrypt.compare(password, this.password)
 }
 
 const User = mongoose.model('user', userSchema)

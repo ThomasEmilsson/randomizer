@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './settings.scss'
-import { updateName } from '../../api/requests'
+import { updateName, updatePassword } from '../../api/requests'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import updateDocument from '../themeHandling/updateDocument.js'
@@ -12,6 +12,7 @@ const Settings = () => {
 
   const [data, setData] = useState({ name: '', password: '', passwordTwo: '' })
   const [errorOne, setErrorOne] = useState('')
+  const [errorTwo, setErrorTwo] = useState('')
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -49,7 +50,15 @@ const Settings = () => {
 
   const changePassword = async (event) => {
     event.preventDefault()
-    console.log(data.password + ' --- ' + data.passwordTwo)
+
+    if (data.password === data.passwordTwo) {
+      await updatePassword({
+        password: data.password,
+        token: user.token,
+      })
+    } else {
+      setErrorTwo('passwords do not match')
+    }
   }
 
   return (
@@ -120,7 +129,7 @@ const Settings = () => {
                 />
               </div>
               <div className="change-password-input inputs">
-                <div />
+                <span className="form-errors">{errorTwo}</span>
                 <button className="button-submit" type="submit">
                   Change Password
                 </button>
