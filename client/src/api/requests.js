@@ -192,7 +192,23 @@ const getCurrentUser = async (token) => {
     return err.response
   }
 }
+const deleteAccount = async ({ id, token }) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
 
+    const response = await axios.delete(
+      `http://localhost:3500/api/user/${id}`,
+      config
+    )
+    return response
+  } catch (err) {
+    return err.response
+  }
+}
 export {
   updateTheme,
   updateName,
@@ -202,4 +218,5 @@ export {
   getDateIdeas,
   getCurrentUser,
   updatePassword,
+  deleteAccount,
 }

@@ -9,6 +9,7 @@ const sessionHandler = session({
   resave: false,
   saveUninitialized: false,
   store: new mongoStore({ url: keys.mongoURI }),
+  cookie: { maxAge: 24 * 60 * 60 * 1000 },
 })
 
 export { sessionHandler as session }

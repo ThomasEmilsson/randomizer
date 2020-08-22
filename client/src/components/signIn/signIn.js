@@ -32,12 +32,12 @@ const SignIn = () => {
       setError('password missing')
     } else {
       let response = await signIn(data)
-      console.log(response)
       if (response.token) {
         setUser({
           name: response.name,
           email: data.email,
           token: response.token,
+          id: response.id,
         })
         history.push('/home')
       } else {

@@ -112,8 +112,33 @@
     color: red;
 }
 
+
 .settings .button-submit {
     height: 40px;
+}
+
+.settings .button-submit:hover {
+    background-color: #414648
+}
+
+.settings .deleteButton {
+    height: 40px;
+    margin-right: 20px;
+}
+
+.settings .deleteButtonConfirm {
+    height: 40px;
+    display: none;
+}
+
+
+.settings .deleteButton:hover {
+    background-color: #414648
+}
+
+.settings .deleteButtonConfirm:hover {
+    background-color: #af2a2a;
+
 }
 
 .settings .light-theme {

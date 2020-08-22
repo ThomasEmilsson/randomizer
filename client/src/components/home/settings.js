@@ -1,14 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import './settings.scss'
-import { updateName, updatePassword } from '../../api/requests'
+import { updateName, updatePassword, deleteAccount } from '../../api/requests'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import updateDocument from '../themeHandling/updateDocument.js'
 import ThemeUpdater from '../themeHandling/themeUpdater'
+import { useHistory } from 'react-router-dom'
 
 const Settings = () => {
-  const [theme] = useContext(ThemeContext)
+  let history = useHistory()
+  const [theme, setTheme] = useContext(ThemeContext)
   const [user, setUser] = useContext(UserContext)
+  const firstClick = useRef(true)
 
   const [data, setData] = useState({ name: '', password: '', passwordTwo: '' })
   const [errorOne, setErrorOne] = useState('')
@@ -43,6 +46,7 @@ const Settings = () => {
           name: data.name,
           email: user.email,
           token: user.token,
+          id: user.id,
         })
       }
     }
@@ -58,6 +62,41 @@ const Settings = () => {
       })
     } else {
       setErrorTwo('passwords do not match')
+    }
+  }
+
+  const displayDelete = () => {
+    let button = document.getElementsByClassName('deleteButtonConfirm')[0].style
+    let back = document.getElementsByClassName('deleteButton')[0]
+
+    if (button.display === '' || button.display === 'none') {
+      button.display = 'block'
+      back.innerHTML = 'undo'
+    } else {
+      button.display = 'none'
+      back.innerHTML = 'delete account'
+    }
+  }
+  const handleAccountDelete = async (event) => {
+    event.preventDefault()
+
+    let button = document.getElementsByClassName('deleteButtonConfirm')[0]
+
+    if (firstClick.current) {
+      button.innerHTML = 'click here again to delete your account permanently'
+      firstClick.current = false
+    } else {
+      let response = await deleteAccount({ id: user.id, token: user.token })
+      if (response.status === 200) {
+        setUser({
+          name: '',
+          email: '',
+          token: '',
+          id: '',
+        })
+        setTheme('theme-dark')
+        history.push('/')
+      }
     }
   }
 
@@ -95,7 +134,7 @@ const Settings = () => {
                 <div className="change-name-input inputs">
                   <span className="form-errors">{errorOne}</span>
                   <button className="button-submit" type="submit">
-                    Change Name
+                    change name
                   </button>
                 </div>
               </div>
@@ -131,7 +170,7 @@ const Settings = () => {
               <div className="change-password-input inputs">
                 <span className="form-errors">{errorTwo}</span>
                 <button className="button-submit" type="submit">
-                  Change Password
+                  change password
                 </button>
               </div>
             </form>
@@ -139,14 +178,24 @@ const Settings = () => {
           <div className="delete-account">
             <div className="form-header">delete account</div>
             <p className="underline" />
-
-            <button
-              // onClick={handleAccountDelete}
-              name="name"
-              placeholder="delete account"
-            >
-              delete account
-            </button>
+            <div className="delete-account-button inputs">
+              <button
+                className="deleteButton"
+                onClick={(e) => displayDelete()}
+                name="name"
+                placeholder="delete account"
+              >
+                delete account
+              </button>
+              <button
+                className="deleteButtonConfirm"
+                onClick={handleAccountDelete}
+                name="name"
+                placeholder="delete account"
+              >
+                are you sure you want to delete your account?
+              </button>
+            </div>
           </div>
         </div>
         <div className="column-two">

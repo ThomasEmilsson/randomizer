@@ -25,7 +25,7 @@ const signUp = async (req, res) => {
     const user = await User.create(req.body)
     const token = generateToken(user)
     req.session.user = user
-    return res.status(201).send({ token })
+    return res.status(201).send({ token: token, id: user._id })
   } catch (err) {
     res.status(500).end()
   }
@@ -58,6 +58,7 @@ const signIn = async (req, res) => {
     return res.status(200).send({
       name: user.name,
       token: token,
+      id: user._id,
     })
   } catch (err) {
     console.error(err)

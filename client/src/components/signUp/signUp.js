@@ -33,9 +33,14 @@ const SignUp = () => {
     } else if (data.password === '') {
       setError('password required')
     } else {
-      let res = await signUp(data)
-      if (res.token) {
-        setUser({ name: data.name, email: data.email, token: res.token })
+      let response = await signUp(data)
+      if (response.token) {
+        setUser({
+          name: data.name,
+          email: data.email,
+          token: response.token,
+          id: response.id,
+        })
         history.push('/home')
       } else {
         setError('something went wrong, try again')

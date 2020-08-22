@@ -41,7 +41,7 @@ const Home = () => {
 
   const logout = async () => {
     await signOut()
-    setUser({ name: '', email: '', token: '' }, 'user')
+    setUser({ name: '', email: '', token: '', id: '' }, 'user')
     setTheme('theme-dark')
     history.push('/')
   }
