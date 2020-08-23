@@ -19,17 +19,12 @@ const Welcome = (props) => {
       <div className="grid-container">
         <div className="panel">
           <img className="logo" src={logo} alt="cozy-logo" />
+          <div />
           <Link to="/signin">
             <button className="button-signin">Sign In</button>
           </Link>
           <Link to="/signup">
             <button className="button-signup">Sign Up</button>
-          </Link>
-          <Link to="/home">
-            <button className="button-signup">Home</button>
-          </Link>
-          <Link to="/theme">
-            <button className="button-signin">Edit Theme</button>
           </Link>
         </div>
       </div>
