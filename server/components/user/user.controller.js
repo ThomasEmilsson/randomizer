@@ -213,6 +213,30 @@ const updatePassword = async (req, res) => {
   }
 }
 
+const getPartners = async (req, res) => {
+  try {
+    const userPartners = await User.findOne(req.user._id).select('partners')
+    let partners = userPartners.partners
+
+    let partnerList = []
+    partners.forEach((partner) =>
+      partnerList.push({ partner: partner.user, status: partner.status })
+    )
+
+    // partners.forEach(async (partner) => {
+    //   const user = await User.findById(partner.user)
+    //   const email = user.email
+    //   console.log(email + ' ' + partner.status)
+    //   message.push(email)
+    // })
+
+    res.status(200).send(partnerList)
+  } catch (err) {
+    console.error(err)
+    res.status(400).end()
+  }
+}
+
 const controller = {
   getCurrentUser: getCurrentUser,
   deleteUser: deleteUser,
@@ -223,6 +247,7 @@ const controller = {
   updateTheme: updateTheme,
   updateName: updateName,
   updatePassword: updatePassword,
+  getPartners: getPartners,
 }
 
 export default controller
