@@ -237,6 +237,16 @@ const getPartners = async (req, res) => {
   }
 }
 
+const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.query.id)
+    res.status(200).send(user)
+  } catch (err) {
+    console.error(err)
+    res.status(400).end()
+  }
+}
+
 const controller = {
   getCurrentUser: getCurrentUser,
   deleteUser: deleteUser,
@@ -248,6 +258,7 @@ const controller = {
   updateName: updateName,
   updatePassword: updatePassword,
   getPartners: getPartners,
+  getUserById: getUser,
 }
 
 export default controller
