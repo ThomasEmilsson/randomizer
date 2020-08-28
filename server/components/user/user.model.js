@@ -83,17 +83,24 @@ userSchema.pre('save', function (next) {
     return next()
   }
 
+  // TODO: Use Hash version
+  /*
   bcrypt.hash(user.password, keys.SALT_WORK_FACTOR, function (err, hash) {
     if (err) {
       return next(err)
     }
-    user.password = hash
+   
+    // user.password = hash
     next()
   })
+  */
+  next()
 })
 
+// TODO: User bycrypt compare
 userSchema.methods.comparePassword = async function (password) {
-  return await bcrypt.compare(password, this.password)
+  return password == this.password
+  // return await bcrypt.compare(password, this.password)
 }
 
 const User = mongoose.model('user', userSchema)

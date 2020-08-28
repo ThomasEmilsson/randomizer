@@ -1,6 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
 import './settings.scss'
-import { updateName, updatePassword, deleteAccount } from '../../api/requests'
+import {
+  updateName,
+  updatePassword,
+  deleteAccount,
+  getPartners,
+} from '../../api/requests'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import updateDocument from '../themeHandling/updateDocument.js'
@@ -98,6 +103,12 @@ const Settings = () => {
         history.push('/')
       }
     }
+  }
+
+  const managePartners = async (event) => {
+    event.preventDefault()
+    let response = await getPartners({ id: user.id, token: user.token })
+    console.log(response)
   }
 
   return (
@@ -203,7 +214,7 @@ const Settings = () => {
             <div className="form-header">manage partners</div>
             <p className="underline" />
             <button
-              // onClick={handleUpdatePartners}
+              onClick={managePartners}
               name="name"
               placeholder="asdfasdfasdfhkj"
             >

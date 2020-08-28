@@ -14,6 +14,6 @@ router.route('/updateTheme').put(userController.updateTheme)
 router.route('/updateName').put(userController.updateName)
 router.route('/updatePassword').put(userController.updatePassword)
 router.route('/partners').get(userController.getPartners)
-router.route('/:id').get(userController.getUserById)
+router.route('/:id').get(userController.getUser)
 
 export default router

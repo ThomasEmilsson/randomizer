@@ -239,7 +239,7 @@ const getPartners = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.query.id)
+    const user = await User.findById(req.params.id)
     res.status(200).send(user)
   } catch (err) {
     console.error(err)
@@ -258,7 +258,7 @@ const controller = {
   updateName: updateName,
   updatePassword: updatePassword,
   getPartners: getPartners,
-  getUserById: getUser,
+  getUser: getUser,
 }
 
 export default controller
