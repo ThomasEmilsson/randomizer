@@ -1,11 +1,5 @@
 import axios from 'axios'
 
-const asyncForEach = async (array, callback) => {
-  for (let index = 0; index < array.length; index++) {
-    await callback(array[index], index, array)
-  }
-}
-
 // SetTheme Hook when logging out calls this method
 //  - safeguard to include name to prevent unnecessary request
 const updateTheme = async ({ name, theme, token }) => {

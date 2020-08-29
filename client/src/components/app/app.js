@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import './app.scss'
 import '../themes.scss'
-import ThemeUpdater from '../themeHandling/themeUpdater'
 import Settings from '../home/settings'
 import Welcome from '../welcome/welcome'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
