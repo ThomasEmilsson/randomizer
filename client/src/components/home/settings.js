@@ -36,7 +36,6 @@ const Settings = () => {
     updateDocument.updateClasses('.panel', theme)
     updateDocument.updateClasses('.form-header', theme)
   })
-
   const changeName = async (event) => {
     event.preventDefault()
     if (data.name === '') {
@@ -220,6 +219,8 @@ const Settings = () => {
             >
               manage partners
             </button>
+            {/* TODO: HERE */}
+            {/* {partners} */}
           </div>
           <div className="change-theme">
             <div className="form-header">change theme</div>
