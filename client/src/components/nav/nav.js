@@ -1,5 +1,4 @@
-import React, { useContext, useRef, useEffect } from 'react'
-import Settings from '../home/settings'
+import React, { useContext } from 'react'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import './nav.scss'
