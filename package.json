@@ -1,7 +1,7 @@
 {
-  "name": "randomizer",
+  "name": "cozydatenight",
   "version": "1.0.0",
-  "description": "pick date idea at random based on user input",
+  "description": "cozy dates, cozy nights",
   "main": "server.js",
   "type": "module",
   "scripts": {
