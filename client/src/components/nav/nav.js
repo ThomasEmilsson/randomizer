@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import './nav.scss'
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import { signOut } from '../../api/authentication'
 import { getDateIdeas } from '../../api/requests'
 
