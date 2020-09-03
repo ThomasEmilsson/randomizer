@@ -22,17 +22,17 @@
     "express-session": "^1.17.1",
     "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.21",
-    "nodemailer": "^6.4.10"
+    "mongoose": "^5.10.2",
+    "nodemailer": "^6.4.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/polyfill": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/register": "^7.10.5",
-    "concurrently": "^5.2.0",
+    "@babel/core": "^7.11.5",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/register": "^7.11.5",
+    "concurrently": "^5.3.0",
     "eslint": "^6.6.0",
     "nodemon": "^2.0.4",
-    "prettier": "^2.0.5"
+    "prettier": "^2.1.1"
   }
 }
