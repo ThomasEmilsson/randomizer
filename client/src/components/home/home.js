@@ -3,13 +3,11 @@ import Settings from '../home/settings'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import './home.scss'
-// import { useHistory } from 'react-router-dom'
 import { getCurrentUser } from '../../api/requests'
 import Nav from '../nav/nav'
 // import CardList from '../../components/cardList/cardList'
 
 const Home = () => {
-  // let history = useHistory()
   const [, setTheme] = useContext(ThemeContext)
   const [user] = useContext(UserContext)
   const isFirstHome = useRef(true)

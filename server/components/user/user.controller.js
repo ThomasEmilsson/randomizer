@@ -200,7 +200,6 @@ const updateName = async (req, res) => {
 
 const updatePassword = async (req, res) => {
   try {
-    // const user = await User.findOne(req.user._id)
     const user = await User.findOne(req.user._id).select('name email password')
 
     user.password = req.body.password
@@ -222,13 +221,6 @@ const getPartners = async (req, res) => {
     partners.forEach((partner) =>
       partnerList.push({ partner: partner.user, status: partner.status })
     )
-
-    // partners.forEach(async (partner) => {
-    //   const user = await User.findById(partner.user)
-    //   const email = user.email
-    //   console.log(email + ' ' + partner.status)
-    //   message.push(email)
-    // })
 
     res.status(200).send(partnerList)
   } catch (err) {
