@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+// TODO: Split Up Requests to UserRequests and DateRequests
+
 // SetTheme Hook when logging out calls this method
 //  - safeguard to include name to prevent unnecessary request
 const updateTheme = async ({ name, theme, token }) => {

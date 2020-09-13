@@ -219,7 +219,7 @@ const Settings = () => {
             >
               manage partners
             </button>
-            {/* TODO: HERE */}
+            {/* TODO: Add Manage Partners Component */}
             {/* {partners} */}
           </div>
           <div className="change-theme">
