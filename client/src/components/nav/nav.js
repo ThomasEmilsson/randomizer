@@ -1,12 +1,39 @@
-import React, { useContext } from 'react'
+import React, { useContext, useParams } from 'react'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
+import Settings from '../home/settings'
 import './nav.scss'
-import { useHistory, NavLink } from 'react-router-dom'
+import {
+  useHistory,
+  NavLink,
+  useRouteMatch,
+  Link,
+  Switch,
+  Route,
+} from 'react-router-dom'
 import { signOut } from '../../api/authentication'
 import { getDateIdeas } from '../../api/requests'
 
+const routes = [
+  {
+    path: '/home',
+    exact: true,
+    sidebar: () => <div>home!</div>,
+    main: () => <h2>Home</h2>,
+  },
+  {
+    path: '/home/settings',
+    sidebar: () => <div>settings!</div>,
+    main: () => (
+      <div>
+        <Settings />
+      </div>
+    ),
+  },
+]
+
 const Nav = () => {
+  let { path, url } = useRouteMatch()
   let history = useHistory()
   const [user, setUser] = useContext(UserContext)
   const [theme, setTheme] = useContext(ThemeContext)
@@ -28,15 +55,23 @@ const Nav = () => {
     await signOut()
     setUser({ name: '', email: '', token: '', id: '' }, 'user')
     setTheme('theme-dark')
-    history.push('/')
+    history.push('/home')
   }
   return (
-    <div className={`nav ${theme}`}>
-      <div className="logo-user">
-        <div className="logo">V</div>
-      </div>
-
-      <div className="options-card">
+    <div>
+      <div className={`nav ${theme}`}>
+        <div className="logo-user">
+          <div className="logo">V</div>
+          <ul style={{ listStyleType: 'none', padding: 0 }}>
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to={`${url}/settings`}>Settings</Link>
+            </li>
+          </ul>
+        </div>
+        {/* <div className="options-card">
         <div className="option-show-cards" onClick={() => loadShowCards()}>
           see cards
         </div>
@@ -58,9 +93,24 @@ const Nav = () => {
         <div className="option-log-out" onClick={() => logout()}>
           log out
         </div>
+      </div> */}
+        <div className="logo-app">---------cozy---------</div>
       </div>
 
-      <div className="logo-app">---------cozy---------</div>
+      <div style={{ flex: 1, padding: '20px' }}>
+        <Switch>
+          {routes.map((route, index) => (
+            // Render more <Route>s with the same paths as
+            // above, but different components this time.
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              children={<route.main />}
+            />
+          ))}
+        </Switch>
+      </div>
     </div>
   )
 }

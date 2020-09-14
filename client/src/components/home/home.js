@@ -5,9 +5,16 @@ import UserContext from '../helpers/userContext'
 import './home.scss'
 import { getCurrentUser } from '../../api/requests'
 import Nav from '../nav/nav'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useRouteMatch,
+} from 'react-router-dom'
 // import CardList from '../../components/cardList/cardList'
 
 const Home = () => {
+  let { path, url } = useRouteMatch()
   const [, setTheme] = useContext(ThemeContext)
   const [user] = useContext(UserContext)
   const isFirstHome = useRef(true)
@@ -29,7 +36,7 @@ const Home = () => {
       <div className="grid-container">
         <Nav className="nav" />
         {/* <CardList dates={datesList} /> */}
-        <Settings />
+        {/* <Settings /> */}
       </div>
     </div>
   )
