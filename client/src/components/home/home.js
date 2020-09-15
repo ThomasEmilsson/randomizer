@@ -33,11 +33,11 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="grid-container">
-        <Nav className="nav" />
-        {/* <CardList dates={datesList} /> */}
-        {/* <Settings /> */}
-      </div>
+      {/* <div className="grid-container"> */}
+      <Nav className="nav" />
+      {/* <CardList dates={datesList} /> */}
+      {/* <Settings /> */}
+      {/* </div> */}
     </div>
   )
 }

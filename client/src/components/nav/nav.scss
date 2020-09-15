@@ -20,35 +20,35 @@
     place-items: center;
 }
 
-.nav .option-settings:hover {
-    transform: scale(1.15);
-    cursor: pointer;
-}
+// .nav .option-settings:hover {
+//     transform: scale(1.15);
+//     cursor: pointer;
+// }
 
-.nav .option-shuffle:hover {
-    transform: scale(1.15);
-    cursor: pointer;
-}
+// .nav .option-shuffle:hover {
+//     transform: scale(1.15);
+//     cursor: pointer;
+// }
 
-.nav .option-show-cards:hover {
-    transform: scale(1.15);
-    cursor: pointer;
-}
+// .nav .option-show-cards:hover {
+//     transform: scale(1.15);
+//     cursor: pointer;
+// }
 
 .nav .option-log-out:hover {
     transform: scale(1.15);
     cursor: pointer;
 }
 
-.nav .option-filter:hover {
-    transform: scale(1.15);
-    cursor: pointer;
-}
+// .nav .option-filter:hover {
+//     transform: scale(1.15);
+//     cursor: pointer;
+// }
 
-.nav .option-add-card:hover {
-    transform: scale(1.15);
-    cursor: pointer;
-}
+// .nav .option-add-card:hover {
+//     transform: scale(1.15);
+//     cursor: pointer;
+// }
 
 .nav .options-card {
     display: grid;
@@ -63,4 +63,21 @@
 .nav .logo-app {
     display: grid;
     place-items: center;
+}
+
+.nav a {
+
+    &:focus,
+    &:visited,
+    &:link,
+    &:active {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.15);
+    }
+
 }

@@ -18,17 +18,11 @@ const routes = [
   {
     path: '/home',
     exact: true,
-    sidebar: () => <div>home!</div>,
     main: () => <h2>Home</h2>,
   },
   {
     path: '/home/settings',
-    sidebar: () => <div>settings!</div>,
-    main: () => (
-      <div>
-        <Settings />
-      </div>
-    ),
+    main: () => <Settings />,
   },
 ]
 
@@ -39,7 +33,7 @@ const Nav = () => {
   const [theme, setTheme] = useContext(ThemeContext)
 
   const loadSettings = () => {
-    history.push('/settings')
+    // history.push('/settings')
   }
   const loadShuffle = () => {}
   const loadAddCard = () => {}
@@ -55,10 +49,10 @@ const Nav = () => {
     await signOut()
     setUser({ name: '', email: '', token: '', id: '' }, 'user')
     setTheme('theme-dark')
-    history.push('/home')
+    history.push('/')
   }
   return (
-    <div>
+    <div className="grid-container">
       <div className={`nav ${theme}`}>
         <div className="logo-user">
           <div className="logo">V</div>
@@ -71,46 +65,45 @@ const Nav = () => {
             </li>
           </ul>
         </div>
-        {/* <div className="options-card">
-        <div className="option-show-cards" onClick={() => loadShowCards()}>
-          see cards
+        <div className="options-card">
+          <div className="option-show-cards" onClick={() => loadShowCards()}>
+            see cards
+          </div>
+          <div className="option-filter" onClick={() => loadFilter()}>
+            filter
+          </div>
+          <div className="option-add-card" onClick={() => loadAddCard()}>
+            add card
+          </div>
+          <div className="option-shuffle" onClick={() => loadShuffle()}>
+            shuffle
+          </div>
         </div>
-        <div className="option-filter" onClick={() => loadFilter()}>
-          filter
+        <div className="options-user">
+          <Link to={`${url}/settings`}>
+            <div className="option-settings" onClick={() => loadSettings()}>
+              settings
+            </div>
+          </Link>
+          <div className="option-log-out" onClick={() => logout()}>
+            log out
+          </div>
         </div>
-        <div className="option-add-card" onClick={() => loadAddCard()}>
-          add card
-        </div>
-        <div className="option-shuffle" onClick={() => loadShuffle()}>
-          shuffle
-        </div>
-      </div>
-
-      <div className="options-user">
-        <div className="option-settings" onClick={() => loadSettings()}>
-          settings
-        </div>
-        <div className="option-log-out" onClick={() => logout()}>
-          log out
-        </div>
-      </div> */}
         <div className="logo-app">---------cozy---------</div>
       </div>
 
-      <div style={{ flex: 1, padding: '20px' }}>
-        <Switch>
-          {routes.map((route, index) => (
-            // Render more <Route>s with the same paths as
-            // above, but different components this time.
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              children={<route.main />}
-            />
-          ))}
-        </Switch>
-      </div>
+      <Switch>
+        {routes.map((route, index) => (
+          // Render more <Route>s with the same paths as
+          // above, but different components this time.
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            children={<route.main />}
+          />
+        ))}
+      </Switch>
     </div>
   )
 }
