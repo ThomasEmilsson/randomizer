@@ -56,14 +56,6 @@ const Nav = () => {
       <div className={`nav ${theme}`}>
         <div className="logo-user">
           <div className="logo">V</div>
-          <ul style={{ listStyleType: 'none', padding: 0 }}>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to={`${url}/settings`}>Settings</Link>
-            </li>
-          </ul>
         </div>
         <div className="options-card">
           <div className="option-show-cards" onClick={() => loadShowCards()}>

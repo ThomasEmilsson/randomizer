@@ -72,6 +72,9 @@ const Settings = () => {
   const displayDelete = () => {
     let button = document.getElementsByClassName('deleteButtonConfirm')[0].style
     let back = document.getElementsByClassName('deleteButton')[0]
+    let confirmButton = document.getElementsByClassName(
+      'deleteButtonConfirm'
+    )[0]
 
     if (button.display === '' || button.display === 'none') {
       button.display = 'block'
@@ -79,13 +82,15 @@ const Settings = () => {
     } else {
       button.display = 'none'
       back.innerHTML = 'delete account'
+      confirmButton.innerHTML = 'are you sure you want to delete your account?'
+      firstClick.current = true
     }
   }
   const handleAccountDelete = async (event) => {
     event.preventDefault()
 
     let button = document.getElementsByClassName('deleteButtonConfirm')[0]
-
+    console.log(firstClick.current + ' ----- ' + firstClick.current)
     if (firstClick.current) {
       button.innerHTML = 'click here again to delete your account permanently'
       firstClick.current = false
