@@ -1,11 +1,10 @@
-import React, { useContext, useParams } from 'react'
+import React, { useContext } from 'react'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import Settings from '../home/settings'
 import './nav.scss'
 import {
   useHistory,
-  NavLink,
   useRouteMatch,
   Link,
   Switch,
@@ -27,14 +26,11 @@ const routes = [
 ]
 
 const Nav = () => {
-  let { path, url } = useRouteMatch()
+  let { url } = useRouteMatch()
   let history = useHistory()
   const [user, setUser] = useContext(UserContext)
   const [theme, setTheme] = useContext(ThemeContext)
 
-  const loadSettings = () => {
-    // history.push('/settings')
-  }
   const loadShuffle = () => {}
   const loadAddCard = () => {}
   const loadFilter = () => {}
@@ -73,9 +69,7 @@ const Nav = () => {
         </div>
         <div className="options-user">
           <Link to={`${url}/settings`}>
-            <div className="option-settings" onClick={() => loadSettings()}>
-              settings
-            </div>
+            <div className="option-settings">settings</div>
           </Link>
           <div className="option-log-out" onClick={() => logout()}>
             log out

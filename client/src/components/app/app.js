@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 import './app.scss'
 import '../themes.scss'
-import Settings from '../home/settings'
 import Welcome from '../welcome/welcome'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import stickyState from '../helpers/stickyHook'
 import updateDocument from '../themeHandling/updateDocument'
 import ThemeContext from '../helpers/themeContext'
@@ -11,7 +10,6 @@ import SignUp from '../signUp/signUp'
 import SignIn from '../signIn/signIn'
 import UserContext from '../helpers/userContext'
 import Home from '../home/home'
-import Nav from '../nav/nav'
 
 const App = () => {
   const themeHook = stickyState('theme-dark', 'theme')
