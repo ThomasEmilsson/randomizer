@@ -20,6 +20,18 @@ const routes = [
     main: () => <h2>Home</h2>,
   },
   {
+    path: '/home/filter',
+    main: () => <div>filter</div>,
+  },
+  {
+    path: '/home/add-new-date',
+    main: () => <div>add-new-date</div>,
+  },
+  {
+    path: '/home/shuffle',
+    main: () => <div>shuffle</div>,
+  },
+  {
     path: '/home/settings',
     main: () => <Settings />,
   },
@@ -30,10 +42,6 @@ const Nav = () => {
   let history = useHistory()
   const [user, setUser] = useContext(UserContext)
   const [theme, setTheme] = useContext(ThemeContext)
-
-  const loadShuffle = () => {}
-  const loadAddCard = () => {}
-  const loadFilter = () => {}
 
   const loadShowCards = async () => {
     console.log(user.token)
@@ -54,34 +62,25 @@ const Nav = () => {
           <div className="logo">V</div>
         </div>
         <div className="options-card">
-          <div className="option-show-cards" onClick={() => loadShowCards()}>
-            see cards
-          </div>
-          <div className="option-filter" onClick={() => loadFilter()}>
-            filter
-          </div>
-          <div className="option-add-card" onClick={() => loadAddCard()}>
-            add card
-          </div>
-          <div className="option-shuffle" onClick={() => loadShuffle()}>
-            shuffle
-          </div>
+          <Link to={`/home`} onClick={() => loadShowCards()}>
+            show cards
+          </Link>
+          <Link to={`${url}/filter`}>filter</Link>
+          <Link to={`${url}/add-new-date`}>add new date</Link>
+          <Link to={`${url}/shuffle`}>shuffle</Link>
+          <hr className="nav-split" />
         </div>
         <div className="options-user">
-          <Link to={`${url}/settings`}>
-            <div className="option-settings">settings</div>
-          </Link>
-          <div className="option-log-out" onClick={() => logout()}>
+          <Link to={`${url}/settings`}>settings</Link>
+          <Link to={`/`} onClick={() => logout()}>
             log out
-          </div>
+          </Link>
         </div>
         <div className="logo-app">---------cozy---------</div>
       </div>
 
       <Switch>
         {routes.map((route, index) => (
-          // Render more <Route>s with the same paths as
-          // above, but different components this time.
           <Route
             key={index}
             path={route.path}

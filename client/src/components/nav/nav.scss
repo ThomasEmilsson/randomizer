@@ -20,20 +20,12 @@
     place-items: center;
 }
 
-// .nav .option-settings:hover {
-//     transform: scale(1.15);
-//     cursor: pointer;
-// }
+.nav-split {
 
-// .nav .option-shuffle:hover {
-//     transform: scale(1.15);
-//     cursor: pointer;
-// }
-
-// .nav .option-show-cards:hover {
-//     transform: scale(1.15);
-//     cursor: pointer;
-// }
+    color: white;
+    height: 1px;
+    width: 80%;
+}
 
 .nav .option-log-out:hover {
     transform: scale(1.15);
