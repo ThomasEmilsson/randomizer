@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import Settings from '../home/settings'
+import CreateDate from '../createDate/createDate'
 import './nav.scss'
 import {
   useHistory,
@@ -24,8 +25,8 @@ const routes = [
     main: () => <div>filter</div>,
   },
   {
-    path: '/home/add-new-date',
-    main: () => <div>add-new-date</div>,
+    path: '/home/create-new-date',
+    main: () => <CreateDate />,
   },
   {
     path: '/home/shuffle',
@@ -66,7 +67,7 @@ const Nav = () => {
             show cards
           </Link>
           <Link to={`${url}/filter`}>filter</Link>
-          <Link to={`${url}/add-new-date`}>add new date</Link>
+          <Link to={`${url}/create-new-date`}>create new date</Link>
           <Link to={`${url}/shuffle`}>shuffle</Link>
           <hr className="nav-split" />
         </div>
