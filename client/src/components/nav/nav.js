@@ -3,6 +3,7 @@ import ThemeContext from '../helpers/themeContext'
 import UserContext from '../helpers/userContext'
 import Settings from '../home/settings'
 import CreateDate from '../createDate/createDate'
+import Shuffle from '../shuffle/shuffle'
 import './nav.scss'
 import {
   useHistory,
@@ -30,7 +31,7 @@ const routes = [
   },
   {
     path: '/home/shuffle',
-    main: () => <div>shuffle</div>,
+    main: () => <Shuffle />,
   },
   {
     path: '/home/settings',
