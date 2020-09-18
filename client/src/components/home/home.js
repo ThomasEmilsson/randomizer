@@ -6,7 +6,7 @@ import { getCurrentUser } from '../../api/requests'
 import Nav from '../nav/nav'
 
 const Home = () => {
-  const [, setTheme] = useContext(ThemeContext)
+  const [theme, setTheme] = useContext(ThemeContext)
   const [user] = useContext(UserContext)
   const isFirstHome = useRef(true)
 
@@ -25,6 +25,7 @@ const Home = () => {
   return (
     <div className="home">
       <Nav className="nav" />
+      <div className={`title ${theme}`}> create new date</div>
     </div>
   )
 }

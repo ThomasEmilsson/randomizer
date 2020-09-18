@@ -10,3 +10,25 @@ body {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
+
+
+.home {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  padding-right: 5%;
+  min-height: 100vh;
+  max-height: 100vh;
+  height: 100%;
+}
+
+.home .title {
+  font-size: 28px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  letter-spacing: 3px;
+
+  @include theme() {
+    color: theme(nav);
+  }
+}

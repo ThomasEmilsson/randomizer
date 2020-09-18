@@ -4,6 +4,7 @@ import UserContext from '../helpers/userContext'
 import Settings from '../home/settings'
 import CreateDate from '../createDate/createDate'
 import Shuffle from '../shuffle/shuffle'
+import CardList from '../cardList/cardList'
 import './nav.scss'
 import {
   useHistory,
@@ -19,11 +20,11 @@ const routes = [
   {
     path: '/home',
     exact: true,
-    main: () => <h2>Home</h2>,
+    main: () => <CardList />,
   },
   {
-    path: '/home/filter',
-    main: () => <div>filter</div>,
+    path: '/home/card-list',
+    main: () => <CardList />,
   },
   {
     path: '/home/create-new-date',
@@ -65,9 +66,9 @@ const Nav = () => {
         </div>
         <div className="options-card">
           <Link to={`/home`} onClick={() => loadShowCards()}>
-            show cards
+            home
           </Link>
-          <Link to={`${url}/filter`}>filter</Link>
+          <Link to={`${url}/card-list`}>show cards</Link>
           <Link to={`${url}/create-new-date`}>create new date</Link>
           <Link to={`${url}/shuffle`}>shuffle</Link>
           <hr className="nav-split" />
