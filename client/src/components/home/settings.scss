@@ -30,6 +30,7 @@
     grid-template-columns: repeat(2, 1fr);
     padding-left: 5%;
     text-align: left;
+    padding-top: 50px;
 
     @include theme() {
         background: theme(background-focus) 0% 0% no-repeat padding-box;

@@ -25,7 +25,6 @@ const Home = () => {
   return (
     <div className="home">
       <Nav className="nav" />
-      <div className={`title ${theme}`}> create new date</div>
     </div>
   )
 }

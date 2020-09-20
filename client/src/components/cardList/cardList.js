@@ -16,7 +16,7 @@ const CardList = (props) => {
             <p>{idea.name}</p>
             <p>{user.name === '' ? ' blank ' : 'by ' + user.email}</p>
           </div>
-        )) || ''}
+        ))}
       </div> */}
     </div>
   )
