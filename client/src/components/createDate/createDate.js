@@ -20,28 +20,50 @@ const CreateDate = () => {
         >
           <div className="column-one">
             <div className="change-name-input inputs">
-              current name:
+              card title
               <input
                 readOnly
                 value=""
                 className={`${theme}`}
                 type="text"
-                name="current-name"
-                placeholder="username"
+                name="card-title"
+                placeholder="card title"
+              />
+            </div>
+            <div className="change-name-input inputs">
+              description
+              <input
+                readOnly
+                value=""
+                className={`${theme}`}
+                type="text"
+                name="description"
+                placeholder="description"
+              />
+            </div>
+            <div className="change-name-input inputs">
+              things to talk about
+              <input
+                readOnly
+                value=""
+                className={`${theme}`}
+                type="text"
+                name="topics"
+                placeholder="things to talk about"
               />
             </div>
           </div>
           <div className="column-two">
             <div className="change-name-input inputs">
-              current name:
+              tags
+              {/* <input type="checkbox">romantic</input> */}
               <input
-                readOnly
-                value=""
-                className={`${theme}`}
-                type="text"
-                name="current-name"
-                placeholder="username"
+                type="checkbox"
+                id="romantic"
+                name="romantic"
+                value="romantic"
               />
+              <label for="romantic"> romantic</label>
             </div>
           </div>
           <div className="create-new-date-button-section">
