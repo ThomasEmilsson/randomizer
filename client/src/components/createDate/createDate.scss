@@ -49,6 +49,7 @@
 .create-date .column-one {
     display: grid;
     grid-area: 1 / 1 / 2 / 2;
+    padding-left: 5%;
 }
 
 .create-date .column-two {
@@ -66,4 +67,18 @@
 .create-date .button-submit {
     height: 100px;
     width: 200px;
+}
+
+.create-date .create-date-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-date-input input {
+    width: 50%;
+}
+
+.create-date .tag-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }

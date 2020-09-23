@@ -19,7 +19,7 @@ const CreateDate = () => {
           onSubmit={(e) => createNewDate(e)}
         >
           <div className="column-one">
-            <div className="change-name-input inputs">
+            <div className="create-date-input">
               card title
               <input
                 readOnly
@@ -30,7 +30,7 @@ const CreateDate = () => {
                 placeholder="card title"
               />
             </div>
-            <div className="change-name-input inputs">
+            <div className="create-date-input">
               description
               <input
                 readOnly
@@ -41,7 +41,7 @@ const CreateDate = () => {
                 placeholder="description"
               />
             </div>
-            <div className="change-name-input inputs">
+            <div className="create-date-input">
               things to talk about
               <input
                 readOnly
@@ -54,16 +54,48 @@ const CreateDate = () => {
             </div>
           </div>
           <div className="column-two">
-            <div className="change-name-input inputs">
-              tags
-              {/* <input type="checkbox">romantic</input> */}
-              <input
-                type="checkbox"
-                id="romantic"
-                name="romantic"
-                value="romantic"
-              />
-              <label for="romantic"> romantic</label>
+            {/* tags */}
+            <div className="tag-list">
+              <div>
+                <input type="checkbox" id="romantic" name="romantic" />
+                <label for="romantic">romantic</label>
+              </div>
+              <div>
+                <input type="checkbox" id="cozy" name="cozy" />
+                <label for="cozy">cozy</label>
+              </div>
+              <div>
+                <input type="checkbox" id="fun" name="fun" />
+                <label for="fun">fun</label>
+              </div>
+              <div>
+                <input type="checkbox" id="cheeky" name="cheeky" />
+                <label for="cheeky">cheeky</label>
+              </div>
+              <div>
+                <input type="checkbox" id="adventure" name="adventure" />
+                <label for="adventure">adventure</label>
+              </div>
+              <div>
+                <input type="checkbox" id="casual" name="casual" />
+                <label for="casual">casual</label>
+              </div>
+              <div>
+                <input type="checkbox" id="fancy" name="fancy" />
+                <label for="fancy">fancy</label>
+              </div>
+              <div>
+                <input type="checkbox" id="cheap" name="cheap" />
+                <label for="cheap">cheap</label>
+              </div>
+              <div>
+                <input type="checkbox" id="pricey" name="pricey" />
+                <label for="pricey">pricey</label>
+              </div>
+              <div>
+                <input type="checkbox" id="new" name="new" />
+                <label for="new">new</label>
+              </div>
             </div>
           </div>
           <div className="create-new-date-button-section">
